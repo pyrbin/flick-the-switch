@@ -9,7 +9,11 @@ namespace Audio {
         ShopUpgrade,
         AmongUs,
         Lamp,
-        Snore
+        Snore,
+        Money,
+        Beep,
+        CoinPurse,
+        EnemyBlueHit
     }
 }
 namespace Audio {

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d15ae218647a2d4f85e14306846c10c, type: 3}
-  m_Name: SwitchClick
+  m_Name: Beep
   m_EditorClassIdentifier: 
   safeName: 
   presetDescription: 
   files:
-  - {fileID: 8300000, guid: d89a51999d1b5eb45871e5ca69abb4c6, type: 3}
+  - {fileID: 8300000, guid: 21ac5dc2d385d4f4c9d92d4a4b493f89, type: 3}
   loopStart: 0
   loopEnd: 0
   bpm: 120
