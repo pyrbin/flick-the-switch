@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8678889238959107724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Pixelate Render Feature
+  m_EditorClassIdentifier: Assembly-CSharp:Ooze.Runtime.Pixelate.Runtime:PixelateRenderFeature
+  m_Active: 1
+  PixelsPerUnit: 8
+  UIOverlay: {fileID: 0}
+  EnablePixelSnapping: 1
+  CameraPixelSnapping: 1
+  CameraSubPixelSmoothing: 1
+  _DitheringSettings:
+    DitherThreshold: 0
+    DitherStrength: 0
+    DitherScale: 0
+  _EdgeHighlightSettings:
+    ConvexHighlight: 0
+    OutlineShadow: 0
+    ConcaveShadow: 0
+  Inspector_ScaleFactorClamped: 0
+--- !u!114 &-90157619848881015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 729a2e952309e2547a3747b2cdd9a36f, type: 3}
+  m_Name: ShapesRenderFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de640fe3d0db1804a85f9fc8f5cadab6, type: 3}
+  m_Name: Renderer 3D
+  m_EditorClassIdentifier: 
+  debugShaders:
+    debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
+    hdrDebugViewPS: {fileID: 4800000, guid: 573620ae32aec764abd4d728906d2587, type: 3}
+    probeVolumeSamplingDebugComputeShader: {fileID: 7200000, guid: 53626a513ea68ce47b59dc1299fe3959, type: 3}
+  probeVolumeResources:
+    probeVolumeDebugShader: {fileID: 0}
+    probeVolumeFragmentationDebugShader: {fileID: 0}
+    probeVolumeOffsetDebugShader: {fileID: 0}
+    probeVolumeSamplingDebugShader: {fileID: 0}
+    probeSamplingDebugMesh: {fileID: 0}
+    probeSamplingDebugTexture: {fileID: 0}
+    probeVolumeBlendStatesCS: {fileID: 0}
+  m_RendererFeatures:
+  - {fileID: -90157619848881015}
+  - {fileID: 7894959343231355796}
+  m_RendererFeatureMap: 89dc1c571fb2bffe94cb7481b187906d
+  m_UseNativeRenderPass: 0
+  xrSystemData: {fileID: 0}
+  postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
+  m_AssetVersion: 2
+  m_OpaqueLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_TransparentLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_DefaultStencilState:
+    overrideStencilState: 0
+    stencilReference: 0
+    stencilCompareFunction: 8
+    passOperation: 2
+    failOperation: 0
+    zFailOperation: 0
+  m_ShadowTransparentReceive: 1
+  m_RenderingMode: 0
+  m_DepthPrimingMode: 0
+  m_CopyDepthMode: 1
+  m_DepthAttachmentFormat: 0
+  m_DepthTextureFormat: 0
+  m_AccurateGbufferNormals: 0
+  m_IntermediateTextureMode: 1
+--- !u!114 &7894959343231355796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea53e59617875c54f80ae5b91ff9395c, type: 3}
+  m_Name: Pixelate Render Feature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  PixelsPerUnit: 14
+  OverlayCursorTexture: {fileID: 8400000, guid: a3a0da0acadb2b44aa6299ac8b2538be, type: 2}
+  OverlayUITexture: {fileID: 8400000, guid: d21a3089d90109c408cdd539bf61df91, type: 2}
+  EnablePixelSnapping: 1
+  CameraPixelSnapping: 1
+  CameraSubPixelSmoothing: 1
+  _DitheringSettings:
+    DitherThreshold: 0.5
+    DitherStrength: 0.5
+    DitherScale: 1
+  _EdgeHighlightSettings:
+    ConvexHighlight: 0.5
+    OutlineShadow: 0.5
+    ConcaveShadow: 1
+  Inspector_ScaleFactorClamped: 0

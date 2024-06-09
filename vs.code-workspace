@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "roguelight"
+		},
+		{
+			"path": "docs"
+		}
+	],
+	"settings": {
+		"dotnet.defaultSolution": "roguelight.sln",
+		"omnisharp.enableEditorConfigSupport": true
+	}
+}

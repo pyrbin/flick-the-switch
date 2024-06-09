@@ -1,0 +1,93 @@
+[Aa]rtifacts/
+[Bb]uild/
+[Ll]ibrary/
+[Oo]bj/
+[Tt]emp/
+[Ss]treaming[Aa]ssets/
+[Aa]ctual[Ii]mages/
+[Ll]og/
+[Ll]ogs/
+[Aa]ctual[Ii]mages.meta
+[Ss]treaming[Aa]ssets.meta
+[Oo]ut/
+[Uu]serSettings/
+/[Aa]rtifacts/
+/[Cc]odeCoverage/
+
+/roguelight/.vscode
+
+.vs
+.vsconfig
+.idea
+
+.DS_Store
+*.aspx
+*.browser
+*.csproj
+*.exe
+*.ini
+*.log
+*.map
+*.mdb
+*.npmrc
+*.pyc
+*.resS
+*.sdf
+*.sln
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.userprefs
+*.orig
+*.orig.meta
+.npmrc
+
+########################################
+# FMOD .gitignore
+# Get latest from https://github.com/fmod/UnityIntegration/blob/master/.gitignore
+########################################
+
+# Never ignore DLLs in the FMOD subfolder.
+!/[Aa]ssets/Plugins/FMOD/libs/*
+
+# Never ignore DLLs in the FMOD subfolder.
+!/[Aa]ssets/Plugins/FMOD/**/lib/*
+
+
+# Don't ignore images and gizmos used by FMOD in the Unity Editor.
+!/[Aa]ssets/Gizmos/FMOD/*
+!/[Aa]ssets/Editor Default Resources/FMOD/*
+
+# Ignore the Cache folder since it is updated locally.
+/[Aa]ssets/Plugins/FMOD/Cache/*
+
+# Ignore bank files in the StreamingAssets folder.
+/[Aa]ssets/StreamingAssets/**/*.bank
+/[Aa]ssets/StreamingAssets/**/*.bank.meta
+# If the source bank files are kept outside of the StreamingAssets folder then these can be ignored.
+
+/[Aa]ssets/Plugins/FMOD/Cache/*
+/[Aa]ssets/Plugins/FMOD/Cache/*
+
+/FMODProject/.*
+!/FMODProject/Build/
+
+
+# Log files can be ignored.
+fmod_editor.log
+
+# Audacity Project Files
+*.au
+*.aup
+
+*.dwlt
+
+# VsCode Plugin
+omnisharp.json
+settings.json
+CSharpProjFolders
+TSKDoNotDelete.txt
+
+# Paid Plugins
+roguelight/Assets/Plugins/Shapes/*
+!/roguelight/Assets/Plugins/Shapes/.gitkeep

@@ -1,0 +1,12 @@
+global using global::System;
+global using global::System.Collections.Generic;
+global using global::System.IO;
+global using global::System.Linq;
+global using global::OneOf;
+global using global::OneOf.Types;
+global using global::NaughtyAttributes;
+global using global::Unity.Mathematics;
+global using global::UnityEngine.Assertions;
+global using global::Freya;
+global using global::DG.Tweening;
+global using global::Cysharp.Threading.Tasks;

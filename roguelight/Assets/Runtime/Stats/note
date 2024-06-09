@@ -1,0 +1,5 @@
+# Adding a new stat
+- Create MonoBehaviour script
+- Add to StatType enum
+- Add to StatLookup
+- Epic :)
