@@ -286,7 +286,10 @@ public class Game : MonoBehaviour
             return;
         }
 
-        SetState(GameState.Playing);
+        UniTask.Void(async () => {
+            await UniTask.Delay(TimeSpan.FromSeconds(0.2), ignoreTimeScale: false);
+            SetState(GameState.Playing);
+        });
     }
 
     public void Update()
