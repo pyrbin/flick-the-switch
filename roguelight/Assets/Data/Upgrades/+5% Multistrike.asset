@@ -17,7 +17,7 @@ MonoBehaviour:
   Color: {r: 1, g: 0.93410516, b: 0, a: 1}
   AccentColor: {r: 0.8867924, g: 0.8233188, b: 0.32208967, a: 1}
   Type: 0
-  Value: 5
+  Value: 0.05
   GoldCost: 5
   Modifier: 0
   OverrideDescription: multistrike +5% chance

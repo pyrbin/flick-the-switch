@@ -47,7 +47,8 @@ public class Player : MonoBehaviour
 
     public void Start()
     {
-        UserInput.Instance.OnClicked += OnClick;
+        if (UserInput.Instance is not null)
+            UserInput.Instance.OnClicked += OnClick;
     }
 
     private float _flickerTimer = 0f;

@@ -3394,7 +3394,7 @@ MonoBehaviour:
   Light: {fileID: 1507808063}
   RoundContainer: {fileID: 1870757295}
   BackWall: {fileID: 1541221267}
-  OilDepletionRate: 0.05
+  BaseOilDepletionRate: 10
   RerollBaseCost: 2
   InterestRate: 4
   InterestCeiling: 20
@@ -3408,6 +3408,33 @@ MonoBehaviour:
   - LowerLevelThreshold: 0
     UpperLevelThreshold: 5
     Item: {fileID: 11400000, guid: 22e83e62c9283204da32b19c52c853c6, type: 2}
+  - LowerLevelThreshold: 0
+    UpperLevelThreshold: 5
+    Item: {fileID: 11400000, guid: 81b2a08fa4853bf488ab35e71969448c, type: 2}
+  - LowerLevelThreshold: 3
+    UpperLevelThreshold: 5
+    Item: {fileID: 11400000, guid: ad7852a7d876d56498a46bf392af2ba4, type: 2}
+  - LowerLevelThreshold: 3
+    UpperLevelThreshold: 100
+    Item: {fileID: 11400000, guid: ad7852a7d876d56498a46bf392af2ba4, type: 2}
+  - LowerLevelThreshold: 3
+    UpperLevelThreshold: 100
+    Item: {fileID: 11400000, guid: f6de0a61399d8ca4f81c6782a87ec53c, type: 2}
+  - LowerLevelThreshold: 3
+    UpperLevelThreshold: 100
+    Item: {fileID: 11400000, guid: cc6eb8f24cd1e2a428d7e5fae3c2d2bd, type: 2}
+  - LowerLevelThreshold: 3
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: 96b04161c65cb24449ed90f810f75afe, type: 2}
+  - LowerLevelThreshold: 7
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: 656cc12af60ece548a73e30152747f60, type: 2}
+  - LowerLevelThreshold: 2
+    UpperLevelThreshold: 4
+    Item: {fileID: 11400000, guid: 22e83e62c9283204da32b19c52c853c6, type: 2}
+  - LowerLevelThreshold: 1
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: 81b2a08fa4853bf488ab35e71969448c, type: 2}
   State: 0
   Stats:
     TotalGold: 0
@@ -4230,14 +4257,14 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 248
-    height: 140
+    width: 186
+    height: 139
   _DisplayViewport:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 889
-    height: 500
+    width: 640
+    height: 480
 --- !u!1 &536523486
 GameObject:
   m_ObjectHideFlags: 0
@@ -9231,6 +9258,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8771091787928289351, guid: 5150a23bbb34d574bb18139b77b36954, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1142376962}
+    - targetCorrespondingSourceObject: {fileID: 8771091787928289351, guid: 5150a23bbb34d574bb18139b77b36954, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1142376965}
   m_SourcePrefab: {fileID: -4161369568681901532, guid: 5150a23bbb34d574bb18139b77b36954, type: 3}
 --- !u!1 &1142376960 stripped
 GameObject:
@@ -9294,6 +9324,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8941734, y: 1, z: 0.63817155}
   m_Center: {x: 0.33710083, y: 0.000000062072985, z: 0.18091485}
+--- !u!114 &1142376965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142376960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2d7848ae169ef4096b33288d2a0bd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundFile: {fileID: 0}
+  clickable: {fileID: 0}
 --- !u!1 &1146319308
 GameObject:
   m_ObjectHideFlags: 0
@@ -16749,8 +16793,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RoundContainer: {fileID: 1870757295}
   CloseSpawn: {fileID: 1226715208}
-  EnemyPrefabs: []
-  EnemyPrefab: {fileID: 5696537399521508789, guid: 99508abb000efcb45b83aa35a67c6a02, type: 3}
+  EnemyPrefabs:
+  - {fileID: 1308634576577203152, guid: 695e4a3d0932fa640942934143dec248, type: 3}
+  - {fileID: 1462429146462112313, guid: 12e79691481599142ba2789b44ff6c6f, type: 3}
+  - {fileID: 4417743880907137797, guid: 7854e5c71e6364d418c10a1bc3218430, type: 3}
+  - {fileID: 6364603961756699501, guid: 34738452ac62d484390e061d3bc05d14, type: 3}
+  - {fileID: 3602690737077827683, guid: 7890b82e647496f42b3b69ae369f7289, type: 3}
 --- !u!1 &2069266136
 GameObject:
   m_ObjectHideFlags: 0

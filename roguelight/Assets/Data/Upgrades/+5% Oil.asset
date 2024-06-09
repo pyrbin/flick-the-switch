@@ -17,7 +17,7 @@ MonoBehaviour:
   Color: {r: 0.06132078, g: 1, b: 0.34786487, a: 1}
   AccentColor: {r: 0.3820755, g: 1, b: 0.6243988, a: 1}
   Type: 3
-  Value: 1.05
+  Value: 0.05
   GoldCost: 10
   Modifier: 1
   OverrideDescription: 

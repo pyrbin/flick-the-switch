@@ -19,7 +19,7 @@ public class Upgrade : ScriptableObject
     [ShowNativeProperty]
     public string Description => ( OverrideDescription?.NullIfEmpty() is not null
         ? OverrideDescription
-        : Type.ToString() + (Value > 0 ? " +" : "-") + Value + (Modifier == ModifierMode.Mult ? "x" : "")).ToLowerInvariant();
+        : Type.ToString() + (Value > 0 ? " +" : "-") + (Modifier == ModifierMode.Mult ? $"{Value*100}%" : Value)).ToLowerInvariant();
 
     public void ApplyStats(GameObject obj)
     {
