@@ -1,8 +1,10 @@
+using JSAM;
 using UnityEngine;
 
 [RequireComponent(typeof(Clickable))]
 public class Enemy : MonoBehaviour
 {
+    public EnemyAudio enemyAudio;
     public Health? Health;
     public GoldReward? GoldReward;
 
@@ -54,6 +56,7 @@ public class Enemy : MonoBehaviour
     public void OnClick(Transform _cursor)
     {
         if (IsDying || IsDead) return;
+        enemyAudio.PlayHitSound();
 
         TweenTools.Shake2(transform, animDuration);
 
@@ -81,7 +84,7 @@ public class Enemy : MonoBehaviour
     public void Kill()
     {
         Player.Instance.NotifyKilled(this.transform);
-
+        enemyAudio.PlayDeathSound();
         IsDead = true;
         transform.DOKill();
         Player.Instance.AddGold((int)GoldReward!.Value);

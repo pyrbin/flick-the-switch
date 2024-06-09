@@ -1,3 +1,4 @@
+using JSAM;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ public class ContinueButton : MonoBehaviour
 
     void OnClick()
     {
+        AudioManager.PlaySound(Audio.Sounds.Beep);
         Player.Instance.OnClick(this.transform);
         TweenTools.Shake(this.GetComponent<RectTransform>(), 0.666f, 1.5f);
         Game.Instance.RestartCycle();

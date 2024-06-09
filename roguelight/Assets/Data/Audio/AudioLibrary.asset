@@ -28,6 +28,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d1290ecbfa8cfb345bd0299c2a67a756, type: 2}
   - {fileID: 11400000, guid: 9527883b7eabebb459ac326c81f920f0, type: 2}
   - {fileID: 11400000, guid: 31fcbe6d6a0c8b246a5d9d66c940ac95, type: 2}
+  - {fileID: 11400000, guid: edb4cbce161be174f97359ce05867ba4, type: 2}
+  - {fileID: 11400000, guid: 9bcd3db93837d7b418ddcfe09de0898c, type: 2}
+  - {fileID: 11400000, guid: 5d4d0a2d70e896143b98a24d09938cf2, type: 2}
+  - {fileID: 11400000, guid: 3863182ff3dfc9b4c8355afd046fbf82, type: 2}
   Music:
   - {fileID: 11400000, guid: d7c6fd02c08e666419889e656851a8a7, type: 2}
   - {fileID: 11400000, guid: b17139a71615145498a505253be90203, type: 2}
@@ -55,6 +59,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: d1290ecbfa8cfb345bd0299c2a67a756, type: 2}
     - {fileID: 11400000, guid: 9527883b7eabebb459ac326c81f920f0, type: 2}
     - {fileID: 11400000, guid: 31fcbe6d6a0c8b246a5d9d66c940ac95, type: 2}
+    - {fileID: 11400000, guid: edb4cbce161be174f97359ce05867ba4, type: 2}
+    - {fileID: 11400000, guid: 9bcd3db93837d7b418ddcfe09de0898c, type: 2}
+    - {fileID: 11400000, guid: 5d4d0a2d70e896143b98a24d09938cf2, type: 2}
+    - {fileID: 11400000, guid: 3863182ff3dfc9b4c8355afd046fbf82, type: 2}
     foldout: 1
   - name: Enemy
     files:

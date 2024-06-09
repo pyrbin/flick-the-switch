@@ -152,7 +152,7 @@ public class Game : MonoBehaviour
     public void EnterState(GameState state)
     {
         AudioManager.StopAllMusic();
-        AudioManager.StopAllSounds();
+        //AudioManager.StopAllSounds();
         switch (state)
         {
             case GameState.Menu:

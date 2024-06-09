@@ -1,3 +1,4 @@
+using JSAM;
 using UnityEngine;
 using Utilities.Extensions;
 
@@ -90,6 +91,7 @@ public class Player : MonoBehaviour
 
     public void AddToInventory(UpgradeItem item)
     {
+        AudioManager.PlaySound(Audio.Sounds.CoinPurse);
         if (item.Upgrade is null || InventoryList.Contains(item) || !CanPurchase(item.Upgrade))
         {
             Game.Instance.SetShopActionsDisabled(false);

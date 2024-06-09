@@ -18,4 +18,8 @@ public class PlaySoundOnClick : MonoBehaviour
         AudioManager.StopSound(soundFile);
         AudioManager.PlaySound(soundFile);
     }
+
+    void OnDisable() {
+        AudioManager.StopSound(soundFile);
+    }
 }
