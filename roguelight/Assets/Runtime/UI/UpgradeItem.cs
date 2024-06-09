@@ -148,13 +148,15 @@ public class UpgradeItem
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (!isClicking) return;
+        if (eventData.button != PointerEventData.InputButton.Left) return;
         if (DisableInput) return;
         if (!IsShopItem) return;
         if (Upgrade is null) return;
         if (!Player.Instance.CanPurchase(Upgrade)) return;
 
         Player.Instance.OnClick(this.transform);
-
+        isClicking = false;
         TransferToShop();
     }
 
@@ -179,9 +181,10 @@ public class UpgradeItem
 
         Player.Instance.AddToInventory(this);
     }
-
+    bool isClicking = false;
     public void OnPointerDown(PointerEventData eventData)
     {
+        isClicking = true;
     }
 
     private void SetTextAlpha(TMPro.TMP_Text text, float alpha)

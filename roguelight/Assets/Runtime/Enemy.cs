@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Clickable))]
 public class Enemy : MonoBehaviour
 {
     public Health? Health;
@@ -89,6 +90,8 @@ public class Enemy : MonoBehaviour
 
     public void Kill()
     {
+        Player.Instance.NotifyKilled(this.transform);
+
         IsDead = true;
         transform.DOKill();
         Player.Instance.AddGold((int)GoldReward!.Value);

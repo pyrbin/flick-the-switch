@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [ExecuteAlways]
+[RequireComponent(typeof(Clickable))]
 public class Switch : MonoBehaviour
 {
     [SerializeField]

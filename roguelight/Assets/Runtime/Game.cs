@@ -20,6 +20,14 @@ public struct ShopEntry {
     public Upgrade Item;
 }
 
+[System.Serializable]
+public struct GameStats
+{
+    public int TotalGold;
+    public int TotalKills;
+    public int Level;
+}
+
 public class Game : MonoBehaviour
 {
     [Header("References")]
@@ -29,6 +37,7 @@ public class Game : MonoBehaviour
     public HUD? HUD;
     public Inventory? Inventory;
     public Shop? Shop;
+    public GameOverMenu? GameOverMenu;
     public Transform? UICanvas;
 
     public Switch? Switch;
@@ -56,6 +65,12 @@ public class Game : MonoBehaviour
     [ReadOnly]
     public GameState State = GameState.Menu;
 
+    [ReadOnly]
+    public GameStats Stats = new();
+
+    public event Action<GameState>? OnStateChange;
+
+
     public static Game Instance { get; private set; }
 
     public void Awake()
@@ -75,6 +90,7 @@ public class Game : MonoBehaviour
         Assert.IsFalse(MainMenu is null);
         Assert.IsFalse(Inventory is null);
         Assert.IsFalse(Shop is null);
+        Assert.IsFalse(GameOverMenu is null);
 
         Player = FindFirstObjectByType<Player>();
 
@@ -96,12 +112,27 @@ public class Game : MonoBehaviour
             Inventory!.AddToInventory(item);
         };
 
+        Player.GoldChanged += (amount, type) =>
+        {
+            if (type == GoldChangedMode.Added)
+            {
+                Stats.TotalGold += amount;
+            }
+        };
+
+
+        Player.OnKill += () =>
+        {
+            Stats.TotalKills++;
+        };
+
         UICanvas!.SetActive(true);
 
         MainMenu!.SetActive(false);
         HUD!.SetActive(false);
         Shop!.SetActive(false);
         Inventory!.SetActive(false);
+        GameOverMenu!.SetActive(false);
 
         UpdateRoomAndLightsOnRound(false);
         SetState(GameState.Menu);
@@ -111,6 +142,7 @@ public class Game : MonoBehaviour
     {
         ExitState(State);
         State = state;
+        OnStateChange?.Invoke(State);
         EnterState(State);
     }
 
@@ -119,6 +151,7 @@ public class Game : MonoBehaviour
         switch (state)
         {
             case GameState.Menu:
+                GameOverMenu!.SetActive(false);
                 Inventory!.SetActive(false);
                 Shop!.SetActive(false);
                 Inventory!.SetActive(false);
@@ -127,9 +160,11 @@ public class Game : MonoBehaviour
                 MainMenu!.Show();
                 break;
             case GameState.Playing:
+                GameOverMenu!.SetActive(false);
                 Inventory!.SetActive(false);
                 Shop.SetActive(false);
                 CurrentLevel++;
+                Stats.Level = CurrentLevel;
                 Switch!.SetActive(false);
                 MainMenu!.Hide();
                 HUD!.Show();
@@ -138,6 +173,7 @@ public class Game : MonoBehaviour
                 RoundManager.Instance.PrepareRound(CurrentLevel);
                 break;
             case GameState.Shop:
+                GameOverMenu!.SetActive(false);
                 _rerollCount = 0;
                 Inventory!.SetActive(true);
                 HUD!.SetForShop();
@@ -152,12 +188,14 @@ public class Game : MonoBehaviour
 
                 break;
             case GameState.GameOver:
+                GameOverMenu!.SetActive(true);
+                GameOverMenu.SyncData();
                 Shop!.SetActive(false);
                 Shop!.Reset();
                 Inventory!.SetActive(true);
                 MainMenu!.SetForShop();
                 HUD!.SetForShop();
-                Switch!.SetActive(true);
+                Switch!.SetActive(false);
                 break;
         }
     }
@@ -188,6 +226,15 @@ public class Game : MonoBehaviour
     public bool HasMoneyForReroll()
     {
         return Player!.Gold >= CurrentRerollCost;
+    }
+
+    public void RestartCycle()
+    {
+        CurrentLevel = 0;
+        Player.Reset();
+        RoundManager.Instance.Reset();
+        Stats = new();
+        SetState(GameState.Menu);
     }
 
     public void RerollShop()

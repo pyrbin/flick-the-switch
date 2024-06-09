@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public event Action<int, GoldChangedMode>? GoldChanged;
     public event Action<UpgradeItem>? OnAddToInventory;
     public event Action<UpgradeItem>? OnRemoveFromInventory;
+    public event Action? OnKill;
 
     public static Player Instance { get; private set; }
 
@@ -54,7 +55,7 @@ public class Player : MonoBehaviour
     {
         if (Luminosity is not null && Cursor.Instance?.Light is not null && Cursor.Instance.EnableLights)
         {
-            const float baseIntensity = 100f;
+            const float baseIntensity = 150f;
             const float baseRange = 20f;
 
             float intensity = baseIntensity;
@@ -131,6 +132,10 @@ public class Player : MonoBehaviour
         }
         InventoryList.Clear();
         Game.Instance.SetShopActionsDisabled(false);
+        Gold = 0;
+        Luminosity?.Reset();
+        Oil?.Reset();
+        Damage?.Reset();
     }
 
     public void OnClick(Transform target)
@@ -141,5 +146,10 @@ public class Player : MonoBehaviour
         {
             health.Reduce(Damage!.Value);
         }
+    }
+
+    public void NotifyKilled(Transform? target)
+    {
+        OnKill?.Invoke();
     }
 }
