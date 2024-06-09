@@ -6,10 +6,17 @@ namespace Audio {
         ClickSuccess,
         ShopHover,
         ShopReroll,
-        ShopUpgrade
+        ShopUpgrade,
+        AmongUs,
+        Lamp,
+        Snore
     }
 }
 namespace Audio {
     public enum Music {
+        Menu,
+        Playing,
+        GameOver,
+        Shop
     }
 }
