@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
         if (Luminosity is not null && Cursor.Instance?.Light is not null && Cursor.Instance.EnableLights)
         {
             const float baseIntensity = 150f;
-            const float baseRange = 20f;
+            const float baseRange = 25f;
 
             float intensity = baseIntensity;
             float range = Luminosity.Value + baseRange;
@@ -144,8 +144,22 @@ public class Player : MonoBehaviour
 
         if (target.TryGetComponent<Health>(out var health))
         {
-            health.Reduce(Damage!.Value);
+            RollForDamage(health);
         }
+    }
+
+    private FloatingTextParams _params = new();
+    public void RollForDamage(Health target)
+    {
+        var damage = Damage!.Value;
+        target.Reduce(damage);
+
+        _params.Text = damage.ToString(); // format based on type
+        _params.Color = Color.yellow; // calculate based on hit
+        _params.FontSize = FloatingCombatText.FontSize.Small;
+
+        var offset = new Vector3(1f, 3f, 0);
+        FloatingText.Instance.Show(target.transform.position + offset, ref _params);
     }
 
     public void NotifyKilled(Transform? target)

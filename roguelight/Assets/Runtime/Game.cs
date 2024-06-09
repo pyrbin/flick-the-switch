@@ -40,6 +40,7 @@ public class Game : MonoBehaviour
     public Shop? Shop;
     public GameOverMenu? GameOverMenu;
     public Transform? UICanvas;
+    public Light? RoundExitLight;
 
     public Switch? Switch;
     public Light? Light;
@@ -134,6 +135,7 @@ public class Game : MonoBehaviour
         Shop!.SetActive(false);
         Inventory!.SetActive(false);
         GameOverMenu!.SetActive(false);
+        RoundExitLight!.SetActive(false);
 
         UpdateRoomAndLightsOnRound(false);
         SetState(GameState.Menu);
@@ -154,6 +156,7 @@ public class Game : MonoBehaviour
         switch (state)
         {
             case GameState.Menu:
+                RoundExitLight!.SetActive(false);
                 GameOverMenu!.SetActive(false);
                 Inventory!.SetActive(false);
                 Shop!.SetActive(false);
@@ -164,6 +167,7 @@ public class Game : MonoBehaviour
                 AudioManager.PlayMusic(Audio.Music.Menu);
                 break;
             case GameState.Playing:
+                RoundExitLight!.SetActive(false);
                 GameOverMenu!.SetActive(false);
                 Inventory!.SetActive(false);
                 Shop.SetActive(false);
@@ -178,6 +182,7 @@ public class Game : MonoBehaviour
                 RoundManager.Instance.PrepareRound(CurrentLevel);
                 break;
             case GameState.Shop:
+                RoundExitLight!.SetActive(false);
                 GameOverMenu!.SetActive(false);
                 _rerollCount = 0;
                 Inventory!.SetActive(true);
@@ -193,6 +198,7 @@ public class Game : MonoBehaviour
                 AudioManager.PlayMusic(Audio.Music.Shop);
                 break;
             case GameState.GameOver:
+                RoundExitLight!.SetActive(false);
                 GameOverMenu!.SetActive(true);
                 GameOverMenu.SyncData();
                 Shop!.SetActive(false);
@@ -314,6 +320,7 @@ public class Game : MonoBehaviour
         if (RoundManager.Instance is not null && RoundManager.Instance.CheckRoundState())
         {
             Switch!.SetActive(true);
+            RoundExitLight!.SetActive(true);
         }
 
         Player!.GetComponent<Oil>().Reduce(OilDepletionRate);

@@ -47,17 +47,6 @@ public class Enemy : MonoBehaviour
     public void Update()
     {
         Clickable!.IsEnabled = !IsDead && !IsDying;
-        if (_timeSinceHit >= animDuration)
-        {
-            _timeSinceHit = -1.0f;
-            // if (_material != null)
-            //     _material.SetColor("_BaseColor", _originalColor);
-        }
-
-        if (_timeSinceHit >= 0.0f)
-        {
-            _timeSinceHit += Time.deltaTime;
-        }
     }
 
     private float _timeSinceHit = 0;
@@ -79,6 +68,7 @@ public class Enemy : MonoBehaviour
     public void OnHealthDepleted()
     {
         IsDying = true;
+        Clickable!.IsEnabled = false;
 
         RoundManager.Instance.RemoveFromState(this.gameObject);
 

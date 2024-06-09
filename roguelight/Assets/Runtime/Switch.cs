@@ -59,7 +59,7 @@ public class Switch : MonoBehaviour
         UpdateVisuals();
         _locked = true;
         UniTask.Void(async () => {
-            await UniTask.Delay(TimeSpan.FromSeconds(2.0), ignoreTimeScale: false);
+            await UniTask.Delay(TimeSpan.FromSeconds(0.333), ignoreTimeScale: false);
             _locked = false;
         });
     }
