@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d15ae218647a2d4f85e14306846c10c, type: 3}
-  m_Name: ShopReroll
+  m_Name: PICKUP_Coin
   m_EditorClassIdentifier: 
   safeName: 
   presetDescription: 
   files:
-  - {fileID: 8300000, guid: 9661a80b52bdca64c9a0f6a989bb798e, type: 3}
+  - {fileID: 8300000, guid: 1af47840e4bae8340a3b8f3954458707, type: 3}
   loopStart: 0
   loopEnd: 0
   bpm: 120
-  relativeVolume: 0.256
+  relativeVolume: 1
   spatialize: 0
   maxDistance: 0
   priority: 128
   startingPitch: 1
-  pitchShift: 0
+  pitchShift: 0.118
   loopMode: 0
   delay: 0
   ignoreTimeScale: 0
