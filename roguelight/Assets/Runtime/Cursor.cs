@@ -6,6 +6,7 @@ public class Cursor : MonoBehaviour
     public Transform? CursorGfx;
     public LayerMask IncludeLayer;
     public bool HideCursor = false;
+    public RectTransform? CursorRectTransform;
 
     [Header("Light Position")]
     [Range(-10f, 10f)]
@@ -95,10 +96,33 @@ public class Cursor : MonoBehaviour
         Light!.transform.rotation = Quaternion.Euler(new float3(rotX, rotY, eulerAngles.z));
     }
 
+    public float2 NormalizedNdc()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        float normalizedX = mousePosition.x / Screen.width;
+        float normalizedY = mousePosition.y / Screen.height;
+        //normalizedY = 1 - normalizedY;
+        return new float2(normalizedX, normalizedY);
+    }
+
     public void UpdateCursorPosition()
     {
         var mousePosition = new float3(Input.mousePosition.x, Input.mousePosition.y, 1f);
         WorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        // CursorGfx!.transform.position = WorldPosition;
+
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(CursorRectTransform.parent.GetComponent<RectTransform>(), mousePosition.xy, Camera.main, out var localPoint);
+		// RectTransformUtility.ScreenPointToRay(rectTransform, screen_pos, canvas.worldCamera, out anchorPos);
+        var ndc = NormalizedNdc();
+        float2 pos = new();
+        pos.x = ndc.x * Screen.width;
+        pos.y = ndc.y * Screen.height;
+
+        CursorRectTransform.anchoredPosition = localPoint;
+
+        // CursorRectTransform!.position = WorldPosition;
         CursorGfx!.transform.position = WorldPosition;
     }
 }

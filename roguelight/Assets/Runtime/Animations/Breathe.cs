@@ -6,7 +6,7 @@ public class Breathe : MonoBehaviour
     public float ScaleMin = 1f;
 
     [Range(1f, 2f)]
-    public float ScaleMax = 1.3f;
+    public float ScaleMax = 1.15f;
 
     public float Duration = 0f;
 

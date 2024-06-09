@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3961205378516206486}
   - component: {fileID: 7451039673110346437}
   - component: {fileID: 371557438032262469}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Floating Combat Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: crit omg!!!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 085ef2f76ef71b648ad9c523b8f30c61, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 959876878036296213, guid: 085ef2f76ef71b648ad9c523b8f30c61, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -175,7 +175,7 @@ MonoBehaviour:
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_renderer: {fileID: 5799361565402739090}
   m_maskType: 0
 --- !u!114 &7451039673110346437

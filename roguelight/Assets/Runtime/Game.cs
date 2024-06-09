@@ -71,7 +71,6 @@ public class Game : MonoBehaviour
 
     public event Action<GameState>? OnStateChange;
 
-
     public static Game Instance { get; private set; }
 
     public void Awake()
@@ -280,10 +279,8 @@ public class Game : MonoBehaviour
             SetState(GameState.Shop);
             return;
         }
-        UniTask.Void(async () => {
-            await UniTask.Delay(TimeSpan.FromSeconds(0.333), ignoreTimeScale: false);
-            SetState(GameState.Playing);
-        });
+
+        SetState(GameState.Playing);
     }
 
     public void Update()

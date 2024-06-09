@@ -25,7 +25,7 @@ public class UpgradeItem
     private Vector2 _originalDescriptionPosition;
     private Vector2 _originalPosition;
 
-    public bool DisableInput => (IsShopItem && Game.Instance.IsShopActionsDisabled) || _disableInput;
+    public bool DisableInput => (IsShopItem && ((bool?)Game.Instance?.IsShopActionsDisabled ?? true)) || _disableInput;
     private bool _disableInput = false;
 
     public void Awake()

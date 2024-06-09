@@ -68,7 +68,6 @@ public class FloatingCombatText : MonoBehaviour
         Text.fontSize = GetFontSize(para.FontSize);
     }
 
-    [Button("Run")]
     public void Run()
     {
         if (_Animating) return;
@@ -77,25 +76,23 @@ public class FloatingCombatText : MonoBehaviour
         Color color = Text.color;
         color.a = 1f;
         Text.color = color;
-        UniTask.Void(async () => {
-            // Scale up on enter
-            RectTransform.localScale = Vector3.zero;
-            await RectTransform.DOScale(enterScale, enterScaleAnimationDuration).SetEase(Ease.OutBack).AwaitForComplete();
 
+        // Scale up on enter
+        RectTransform.localScale = Vector3.zero;
+        RectTransform.DOScale(enterScale, enterScaleAnimationDuration).SetEase(Ease.OutBack).OnComplete(() => {
             float direction = Freya.Random.Range(0, 2) == 0 ? 1 : -1;
             Vector3[] path = new Vector3[3];
             path[0] = transform.position;
             path[1] = transform.position + new Vector3(curveAmplitude * direction,curveAmplitude,0);
             path[2] = transform.position + new Vector3(curveAmplitude * direction * 2,curveAmplitude * 2,0);
-
             transform.DOPath(path, animationDuration, PathType.CatmullRom).SetEase(Ease.OutSine);
             RectTransform.DOScale(exitScale, animationDuration).SetEase(Ease.InSine);
 
-            // Fade out during the animation
-            await Text.DOFade(0, animationDuration - fadeDuration).SetEase(Ease.InSine).SetDelay(fadeDuration).AsyncWaitForCompletion();
-            _Animating = false;
-            Finished?.Invoke();
-            Reset();
+            Text.DOFade(0, animationDuration - fadeDuration).SetEase(Ease.InSine).SetDelay(fadeDuration).OnComplete(() => {
+                _Animating = false;
+                Finished?.Invoke();
+                Reset();
+            });
         });
     }
 

@@ -42,7 +42,8 @@ namespace Ooze.Runtime.Pixelate.Runtime.RenderPasses {
             var desc = cameraTextureDescriptor;
             desc.width = (int)_Camera.DisplayViewport.width;
             desc.height = (int)_Camera.DisplayViewport.height;
-            desc.enableRandomWrite = true;
+            desc.enableRandomWrite = false;
+            desc.graphicsFormat = GraphicsFormat.R16G16B16A16_SFloat;
             desc.msaaSamples = (int)MSAASamples.None;
             desc.depthBufferBits = 0;
             desc.depthStencilFormat = GraphicsFormat.None;
@@ -57,21 +58,21 @@ namespace Ooze.Runtime.Pixelate.Runtime.RenderPasses {
             );
 
             RenderingUtils.ReAllocateIfNeeded(
-                ref _OverlayUIRT,
-                desc,
-                wrapMode: TextureWrapMode.Clamp,
-                filterMode: FilterMode.Point,
-                anisoLevel: 16,
-                name: "_PixelateOverlayUIRT"
-            );
-
-            RenderingUtils.ReAllocateIfNeeded(
                 ref _OverlayCursorRT,
                 desc,
                 wrapMode: TextureWrapMode.Clamp,
                 filterMode: FilterMode.Point,
                 anisoLevel: 16,
                 name: "_PixelateOverlayCursorRT"
+            );
+
+            RenderingUtils.ReAllocateIfNeeded(
+                ref _OverlayUIRT,
+                desc,
+                wrapMode: TextureWrapMode.Clamp,
+                filterMode: FilterMode.Point,
+                anisoLevel: 16,
+                name: "_PixelateOverlayUIRT"
             );
         }
 

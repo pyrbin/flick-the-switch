@@ -28,13 +28,15 @@ public class Lamp : MonoBehaviour
 
         IsSwinging = true;
 
-        UniTask.Void(async () => {
-            await transform.DORotate(new Vector3(0, targetAngle, 0), SwingDuration, RotateMode.LocalAxisAdd).SetEase(Ease.InOutSine).AwaitForComplete();
-            await transform.DORotate(new Vector3(0, -1f * targetAngle * 1.5f, 0), SwingDuration * 1.5f, RotateMode.LocalAxisAdd).SetEase(Ease.InOutSine).AwaitForComplete();
-            await transform.DORotate(new Vector3(0, targetAngle * .75f, 0), SwingDuration * 1.75f, RotateMode.LocalAxisAdd).SetEase(Ease.InOutSine).AwaitForComplete();
-            await transform.DORotate(new Vector3(0, -1f * targetAngle * 0.25f, 0), SwingDuration * 1.5f, RotateMode.LocalAxisAdd).SetEase(Ease.InOutSine).AwaitForComplete();
-            IsSwinging = false;
-         });
+        transform.DORotate(new Vector3(0, targetAngle, 0), SwingDuration, RotateMode.LocalAxisAdd).SetEase(Ease.InOutSine).OnComplete(() => {
+            transform.DORotate(new Vector3(0, -1f * targetAngle * 1.5f, 0), SwingDuration * 1.5f, RotateMode.LocalAxisAdd).SetEase(Ease.InOutSine).OnComplete(() => {
+                transform.DORotate(new Vector3(0, targetAngle * .75f, 0), SwingDuration * 1.75f, RotateMode.LocalAxisAdd).SetEase(Ease.InOutSine).OnComplete(() => {
+                    transform.DORotate(new Vector3(0, -1f * targetAngle * 0.25f, 0), SwingDuration * 1.5f, RotateMode.LocalAxisAdd).SetEase(Ease.InOutSine).OnComplete(() => {
+                        IsSwinging = false;
+                    });
+                });
+            });
+        });
     }
 
 }

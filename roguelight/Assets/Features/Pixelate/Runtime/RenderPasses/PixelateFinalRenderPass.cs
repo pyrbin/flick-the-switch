@@ -31,12 +31,15 @@ namespace Ooze.Runtime.Pixelate.Runtime.RenderPasses
             using (new ProfilingScope(cmd, new ProfilingSampler(nameof(PixelateFinalRenderPass))))
             {
                 var scaleBias = new Vector4(1, -1f, 0f, 1f);
-
-                if (_Camera.RenderFeature != null && _Camera.RenderFeature.CameraSubPixelSmoothing)
-                {
-                    scaleBias.z += _Camera.PixelSnapDisplacement.x;
-                    scaleBias.w += _Camera.PixelSnapDisplacement.y;
-                }
+#if UNITY_WEBGL && !UNITY_EDITOR
+                // Adjust scaleBias for vertical flip when building for WebAssembly (WebGL)
+                scaleBias = new Vector4(1, 1f, 0f, 0f);
+#endif
+                // if (_Camera.RenderFeature != null && _Camera.RenderFeature.CameraSubPixelSmoothing)
+                // {
+                //     scaleBias.z += _Camera.PixelSnapDisplacement.x;
+                //     scaleBias.w += _Camera.PixelSnapDisplacement.y;
+                // }
 
                 Blitter.BlitCameraTexture(cmd, PixelateUpscaleColorPass.UpscaledRT, colorTarget, scaleBias, 0, bilinear: true);
             }

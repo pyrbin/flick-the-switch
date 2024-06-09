@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: VolumetricFogRendererFeatureLite
   m_EditorClassIdentifier: 
   m_Active: 1
-  renderInSceneView: 1
+  renderInSceneView: 0
   renderPassEvent: 400
   settings:
-    fogDownsampleLevel: 8
+    fogDownsampleLevel: 1
     fogMaterial: {fileID: 2100000, guid: 10d77fea58680bd4497eec1c177490b2, type: 2}
     depthMaterial: {fileID: 2100000, guid: 1d99b61e891acf84683aee11f0e05a8b, type: 2}
     compositeMaterial: {fileID: 2100000, guid: 03b06fe23c18b44479459d11dc405c49, type: 2}
@@ -149,15 +149,15 @@ MonoBehaviour:
   PixelsPerUnit: 14
   OverlayCursorTexture: {fileID: 8400000, guid: a3a0da0acadb2b44aa6299ac8b2538be, type: 2}
   OverlayUITexture: {fileID: 8400000, guid: d21a3089d90109c408cdd539bf61df91, type: 2}
-  EnablePixelSnapping: 1
-  CameraPixelSnapping: 1
-  CameraSubPixelSmoothing: 1
+  EnablePixelSnapping: 0
+  CameraPixelSnapping: 0
+  CameraSubPixelSmoothing: 0
   _DitheringSettings:
-    DitherThreshold: 0.5
-    DitherStrength: 0.5
-    DitherScale: 1
+    DitherThreshold: 100
+    DitherStrength: 10
+    DitherScale: 5
   _EdgeHighlightSettings:
-    ConvexHighlight: 0.5
-    OutlineShadow: 0.5
+    ConvexHighlight: 1
+    OutlineShadow: 1
     ConcaveShadow: 1
   Inspector_ScaleFactorClamped: 0
