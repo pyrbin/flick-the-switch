@@ -158,7 +158,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ScaredGuy_0: -123644692327127081
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

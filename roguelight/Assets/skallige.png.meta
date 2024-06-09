@@ -158,7 +158,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      skallige_0: 5136953456476706194
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

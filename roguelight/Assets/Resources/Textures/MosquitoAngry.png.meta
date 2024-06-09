@@ -158,7 +158,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MosquitoAngry_0: 6924899743541349093
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

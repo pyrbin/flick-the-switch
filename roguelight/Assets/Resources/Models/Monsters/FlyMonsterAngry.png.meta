@@ -158,7 +158,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      FlyMonsterAngry_0: 1943489126250343727
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
