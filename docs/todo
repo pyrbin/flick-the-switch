@@ -14,3 +14,42 @@
 - SOUNDS GALORE
 - Upgrades
 - visuals (shaders, postprocessing, models (bed, etc.))
+
+
+-- Sounds
+
+- Soundtrack
+    - Main Menu
+    - In Game
+    - Shop
+    - Round Finished?
+    - Game Over
+    - Boss?
+- Player
+    - Cursor Click
+    - Enemy
+    - Switch
+    - Buttons
+        - Failed(???)
+    - Upgrade?
+    - Money Gained
+    - Lantern ljud(???)
+    - Oil low
+- Switch
+    - Switch/Lights On/Off
+    - 
+- Shop
+    - Shop Open
+    - Reroll
+    - Upgrade Gained
+- Enemy
+    - Reveal with Light screech??
+    - Teleport sound
+    - Idle?
+    - On Hit
+    - On Death
+- Objects (On Click, On Destroy)
+    - Gold Poach
+    - Oil Barrel
+    - Damage Buff 
+    - Light Bubble
