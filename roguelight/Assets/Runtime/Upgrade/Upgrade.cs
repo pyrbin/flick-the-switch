@@ -1,3 +1,4 @@
+using JSAM;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -22,6 +23,7 @@ public class Upgrade : ScriptableObject
 
     public void ApplyStats(GameObject obj)
     {
+        AudioManager.PlaySound(Audio.Sounds.ShopUpgrade);
         var statComponent = StatLookup.Get(Type, obj);
         if (statComponent.IsNone()) return;
         statComponent.OrDefault()!.Modify(Modifier, Value);
