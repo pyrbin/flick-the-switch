@@ -39,12 +39,12 @@ public class UserInput : MonoBehaviour
     public void RayCast2D(Ray ray, int mask)
     {
         var hit = Physics2D.GetRayIntersection(ray, maxRange, mask);
-
         if (!hit.collider) return;
         if (!hit.collider.TryGetComponent<Clickable>(out var clickable) && clickable != null && clickable.IsEnabled)
             return;
-
-        clickable!.Click(Cursor.Instance.transform);
+        if (Cursor.Instance is null || Cursor.Instance?.transform is null) return;
+        clickable?.Click(Cursor.Instance?.transform ?? null);
+        if (clickable is null || clickable?.IsEnabled is false) return;
         OnClicked?.Invoke(hit.collider.transform);
     }
 
@@ -53,7 +53,9 @@ public class UserInput : MonoBehaviour
         if (!Physics.Raycast(ray, out var hit, maxRange, mask)) return;
         if (!hit.collider.TryGetComponent<Clickable>(out var clickable) && clickable != null && clickable.IsEnabled)
             return;
-        clickable!.Click(Cursor.Instance.transform);
+        if (Cursor.Instance is null || Cursor.Instance?.transform is null) return;
+        clickable?.Click(Cursor.Instance?.transform ?? null);
+        if (clickable is null || clickable?.IsEnabled is false) return;
         OnClicked?.Invoke(hit.collider.transform);
     }
 }
