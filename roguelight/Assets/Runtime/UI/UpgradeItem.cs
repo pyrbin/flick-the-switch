@@ -153,6 +153,8 @@ public class UpgradeItem
         if (Upgrade is null) return;
         if (!Player.Instance.CanPurchase(Upgrade)) return;
 
+        Player.Instance.OnClick(this.transform);
+
         TransferToShop();
     }
 
