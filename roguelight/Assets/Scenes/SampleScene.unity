@@ -4117,7 +4117,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.99999994
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -4176,8 +4176,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 854
-    height: 480
+    width: 774
+    height: 435
 --- !u!1 &536523486
 GameObject:
   m_ObjectHideFlags: 0
@@ -4883,6 +4883,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578624447}
   m_Mesh: {fileID: -2523969308062231991, guid: dd023b26d03af2c448da0a1b3b4cd64e, type: 3}
+--- !u!1 &591517234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 591517236}
+  - component: {fileID: 591517235}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &591517235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591517234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7241a3e106230140bd9d59ff2d17ccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  library: {fileID: 11400000, guid: 7fd18f641242e8440878631d5439194c, type: 2}
+  listener: {fileID: 519420029}
+--- !u!4 &591517236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591517234}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &598765909
 GameObject:
   m_ObjectHideFlags: 0
@@ -17515,6 +17561,7 @@ SceneRoots:
   - {fileID: 922056991}
   - {fileID: 2075495852}
   - {fileID: 424394143}
+  - {fileID: 591517236}
   - {fileID: 1989096809}
   - {fileID: 2060599300}
   - {fileID: 180720204}
