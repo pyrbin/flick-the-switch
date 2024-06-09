@@ -1,3 +1,4 @@
+using JSAM;
 using UnityEngine;
 
 [RequireComponent(typeof(Clickable), typeof(Health))]
@@ -45,6 +46,7 @@ public class GhostBehaviour : MonoBehaviour
 
     public void Teleport()
     {
+        AudioManager.PlaySound(Audio.Sounds.MaskTeleport);
         _teleported = true;
         LookAtCamera!.Look();
         var position = RoundManager.Instance.RequestSpawnPosition();

@@ -52,6 +52,7 @@ public class ScaredGuyBehaviour : MonoBehaviour
         NormalModel.SetActive(false);
         AngryModel.SetActive(true);
 
+        AudioManager.PlaySound(Audio.Sounds.SadGuyAngry);
         TweenTools.Shake2(AngryModel.transform, angryDuration, 1.2f);
         isAngry = true;
 
