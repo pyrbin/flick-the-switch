@@ -158,7 +158,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      DamageIconKnuckles_0: -2225088216228324801
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

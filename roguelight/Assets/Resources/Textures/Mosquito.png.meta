@@ -158,7 +158,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Mosquito_0: 3643050211366897296
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

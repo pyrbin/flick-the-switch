@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2204bf128383ced4f8a374a536984a4c, type: 3}
+  m_Name: AudioLibrary
+  m_EditorClassIdentifier: 
+  soundCategories:
+  - General
+  - Enemy
+  musicCategories:
+  - 
+  Sounds:
+  - {fileID: 11400000, guid: be205d66bd6ef534ebbb72a2b8e7195a, type: 2}
+  - {fileID: 11400000, guid: 4d407e728d2c96043ae9b3bf8ba9d0da, type: 2}
+  - {fileID: 11400000, guid: 72426fa67c5182e4e8b381c43f794e8d, type: 2}
+  - {fileID: 11400000, guid: 4ca1107bfd44f9248b5dbf9fcfca0629, type: 2}
+  - {fileID: 11400000, guid: fe09330ea2df1a945ae32d8dd36012c4, type: 2}
+  - {fileID: 11400000, guid: d44f7e2e891d7cc4c93a182107704973, type: 2}
+  - {fileID: 11400000, guid: 62bcd59ee3ebcf14e98bf1c09a010982, type: 2}
+  Music: []
+  useCustomNames: 1
+  generatedName: AudioLibrary
+  musicEnum: Music
+  musicEnumGenerated: Music
+  musicNamespace: Audio
+  musicNamespaceGenerated: Audio
+  soundEnum: Sounds
+  soundEnumGenerated: Sounds
+  soundNamespace: Audio
+  soundNamespaceGenerated: Audio
+  soundCategoriesToList:
+  - name: General
+    files:
+    - {fileID: 11400000, guid: be205d66bd6ef534ebbb72a2b8e7195a, type: 2}
+    - {fileID: 11400000, guid: 72426fa67c5182e4e8b381c43f794e8d, type: 2}
+    - {fileID: 11400000, guid: 4ca1107bfd44f9248b5dbf9fcfca0629, type: 2}
+    - {fileID: 11400000, guid: fe09330ea2df1a945ae32d8dd36012c4, type: 2}
+    - {fileID: 11400000, guid: d44f7e2e891d7cc4c93a182107704973, type: 2}
+    - {fileID: 11400000, guid: 62bcd59ee3ebcf14e98bf1c09a010982, type: 2}
+    foldout: 1
+  - name: Enemy
+    files:
+    - {fileID: 11400000, guid: 4d407e728d2c96043ae9b3bf8ba9d0da, type: 2}
+    foldout: 1
+  musicCategoriesToList:
+  - name: 
+    files: []
+    foldout: 1

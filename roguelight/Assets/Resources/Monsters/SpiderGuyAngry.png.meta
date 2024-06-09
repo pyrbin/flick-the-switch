@@ -158,7 +158,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SpiderGuyAngry_0: 7982836336704143159
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

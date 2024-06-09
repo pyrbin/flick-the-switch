@@ -38,7 +38,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp:Ooze.Runtime.Pixelate.Runtime:PixelateRenderFeature
   m_Active: 1
   PixelsPerUnit: 8
-  UIOverlay: {fileID: 0}
+  OverlayCursorTexture: {fileID: 0}
+  OverlayUITexture: {fileID: 0}
   EnablePixelSnapping: 1
   CameraPixelSnapping: 1
   CameraSubPixelSmoothing: 1

@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "com.acegikmo.mathfs": "0.1.0",
+    "com.brogrammist.jsam": "https://github.com/jackyyang09/Simple-Unity-Audio-Manager.git#master",
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.dbrizov.naughtyattributes": "2.1.4",
     "com.github-glitchenzo.nugetforunity": "4.1.1",
