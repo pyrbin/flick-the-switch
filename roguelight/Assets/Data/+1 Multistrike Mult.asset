@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de09c8721e537cc438cf1212d7855a95, type: 3}
-  m_Name: +1 Damage
+  m_Name: +1 Multistrike Mult
   m_EditorClassIdentifier: 
-  Name: knuckles
-  Image: {fileID: -2225088216228324801, guid: 3d280cbb8e18900459f57eec612e9ada, type: 3}
-  Color: {r: 1, g: 0, b: 0, a: 1}
-  AccentColor: {r: 1, g: 0.3820755, b: 0.3820755, a: 1}
+  Name: dice
+  Image: {fileID: 3738549579211321190, guid: 334cc68be75e32641afb4aeaa2602ec2, type: 3}
+  Color: {r: 1, g: 0.93410516, b: 0, a: 1}
+  AccentColor: {r: 0.8867924, g: 0.8233188, b: 0.32208967, a: 1}
   Type: 0
-  Value: 1
-  GoldCost: 2
-  Modifier: 0
-  OverrideDescription: 
+  Value: 2
+  GoldCost: 5
+  Modifier: 1
+  OverrideDescription: multistrike x2
