@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
         if (Luminosity is not null && Cursor.Instance?.Light is not null && Cursor.Instance.EnableLights)
         {
             const float baseIntensity = 150f;
-            const float baseRange = 20f;
+            const float baseRange = 25f;
 
             float intensity = baseIntensity;
             float range = Luminosity.Value + baseRange;
