@@ -32,6 +32,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9bcd3db93837d7b418ddcfe09de0898c, type: 2}
   - {fileID: 11400000, guid: 5d4d0a2d70e896143b98a24d09938cf2, type: 2}
   - {fileID: 11400000, guid: 3863182ff3dfc9b4c8355afd046fbf82, type: 2}
+  - {fileID: 11400000, guid: 45fda81c2b415cc40a3aec178371fc9c, type: 2}
   Music:
   - {fileID: 11400000, guid: d7c6fd02c08e666419889e656851a8a7, type: 2}
   - {fileID: 11400000, guid: b17139a71615145498a505253be90203, type: 2}
@@ -63,6 +64,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 9bcd3db93837d7b418ddcfe09de0898c, type: 2}
     - {fileID: 11400000, guid: 5d4d0a2d70e896143b98a24d09938cf2, type: 2}
     - {fileID: 11400000, guid: 3863182ff3dfc9b4c8355afd046fbf82, type: 2}
+    - {fileID: 11400000, guid: 45fda81c2b415cc40a3aec178371fc9c, type: 2}
     foldout: 1
   - name: Enemy
     files:

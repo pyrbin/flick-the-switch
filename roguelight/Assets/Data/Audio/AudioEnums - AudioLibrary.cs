@@ -13,7 +13,8 @@ namespace Audio {
         Money,
         Beep,
         CoinPurse,
-        EnemyBlueHit
+        EnemyBlueHit,
+        Hit
     }
 }
 namespace Audio {

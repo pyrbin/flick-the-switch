@@ -1,3 +1,4 @@
+using JSAM;
 using UnityEngine;
 
 [RequireComponent(typeof(Clickable))]
@@ -35,6 +36,8 @@ public class Lamp : MonoBehaviour
             await transform.DORotate(new Vector3(0, -1f * targetAngle * 0.25f, 0), SwingDuration * 1.5f, RotateMode.LocalAxisAdd).SetEase(Ease.InOutSine).AwaitForComplete();
             IsSwinging = false;
          });
+
+        AudioManager.PlaySound(Audio.Sounds.Lamp);
     }
 
 }

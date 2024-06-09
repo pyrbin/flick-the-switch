@@ -57,6 +57,7 @@ public class Enemy : MonoBehaviour
     {
         if (IsDying || IsDead) return;
         enemyAudio.PlayHitSound();
+        AudioManager.PlaySound(Audio.Sounds.Hit);
 
         TweenTools.Shake2(transform, animDuration);
 
