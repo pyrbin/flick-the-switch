@@ -21,7 +21,7 @@ namespace Ooze.Runtime.Pixelate.Runtime.RenderPasses {
 
         public PixelateUpscaleColorPass(ref RenderTexture uiOverlay, ref RenderTexture cursorTexture)
         {
-            renderPassEvent = RenderPassEvent.AfterRendering - 1;
+            renderPassEvent = RenderPassEvent.AfterRenderingPostProcessing;
 
             _OverlayUISourceRT = uiOverlay;
             _OverlayCursorSourceRT = cursorTexture;

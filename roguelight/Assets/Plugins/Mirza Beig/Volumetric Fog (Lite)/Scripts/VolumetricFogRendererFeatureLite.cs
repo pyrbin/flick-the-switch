@@ -86,6 +86,10 @@ namespace MirzaBeig.VolumetricFogLite
         {
             bool enqueuePass = renderingData.cameraData.cameraType == CameraType.Game;
             enqueuePass |= renderingData.cameraData.cameraType == CameraType.Reflection;
+            if (renderingData.cameraData.camera.gameObject != Camera.main.gameObject)
+            {
+                return;
+            }
 
             if (renderInSceneView)
             {

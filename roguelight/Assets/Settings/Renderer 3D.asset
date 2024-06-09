@@ -1,5 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9120186714567186202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a01d188a26328b4b920cdfdfa2d0def, type: 3}
+  m_Name: VolumetricFogRendererFeatureLite
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  renderInSceneView: 1
+  renderPassEvent: 400
+  settings:
+    fogDownsampleLevel: 8
+    fogMaterial: {fileID: 2100000, guid: 10d77fea58680bd4497eec1c177490b2, type: 2}
+    depthMaterial: {fileID: 2100000, guid: 1d99b61e891acf84683aee11f0e05a8b, type: 2}
+    compositeMaterial: {fileID: 2100000, guid: 03b06fe23c18b44479459d11dc405c49, type: 2}
+    compositeMaterialColourTextureName: _ColourTexture
+    compositeMaterialFogTextureName: _FogTexture
+    compositeMaterialDepthTextureName: _DepthTexture
+    renderTextureQuality: 2
 --- !u!114 &-8678889238959107724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,6 +51,21 @@ MonoBehaviour:
     OutlineShadow: 0
     ConcaveShadow: 0
   Inspector_ScaleFactorClamped: 0
+--- !u!114 &-7653107131306040957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d69a19d29ef66464ea0afc7cd84fd6c2, type: 3}
+  m_Name: VolumetricFogRendererFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  downsampleDepthShader: {fileID: 4800000, guid: cffeaeec0396a2c4dad475266cc8dfeb, type: 3}
+  volumetricFogShader: {fileID: 4800000, guid: 08f816187f9af0244a95556ee0cab83f, type: 3}
 --- !u!114 &-90157619848881015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +105,8 @@ MonoBehaviour:
     probeVolumeBlendStatesCS: {fileID: 0}
   m_RendererFeatures:
   - {fileID: 7894959343231355796}
-  m_RendererFeatureMap: 94cb7481b187906d
+  - {fileID: -9120186714567186202}
+  m_RendererFeatureMap: 94cb7481b187906de668fc0081966e81
   m_UseNativeRenderPass: 0
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
@@ -78,7 +118,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_DefaultStencilState:
-    overrideStencilState: 0
+    overrideStencilState: 1
     stencilReference: 0
     stencilCompareFunction: 8
     passOperation: 2
