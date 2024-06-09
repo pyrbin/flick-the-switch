@@ -33,9 +33,11 @@ public class RoundManager : MonoBehaviour
 
     public static RoundManager Instance { get; private set; }
 
-    public float CalculateEnemyHealth() => 10 + (Game.Instance.CurrentLevel * 2) + (Game.Instance.CurrentLevel > 5 ? Game.Instance.CurrentLevel.Pow(2) * 0.25f : 0f);
+    const int bossLevel = 8;
 
-    public int CalculateEnemySpawnRate() => Mathfs.FloorToInt(Freya.Random.Range(1, 3) + (Game.Instance.CurrentLevel >= 4 ? Freya.Random.Range(1, Game.Instance.CurrentLevel - 3)  : 0f));
+    public float CalculateEnemyHealth() => 10 + (Game.Instance.CurrentLevel * 2) + (Game.Instance.CurrentLevel >= bossLevel ? Game.Instance.CurrentLevel.Pow(2) * 0.25f : 0f);
+
+    public int CalculateEnemySpawnRate() => Mathfs.FloorToInt(Freya.Random.Range(1, 3) + (Game.Instance.CurrentLevel >= bossLevel ? Freya.Random.Range(1, Game.Instance.CurrentLevel - 3)  : 0f));
     public int CalculatePickupSpawnRate() => Mathfs.FloorToInt(Freya.Random.Range(1, Mathfs.CeilToInt(Game.Instance.CurrentLevel/4) + 1));
 
     public void Awake()
@@ -51,7 +53,6 @@ public class RoundManager : MonoBehaviour
         CloseSpawnBounds = Get2DSpawnBounds(CloseSpawn!.bounds);
     }
 
-    const int bossLevel = 5;
     const float reserveSize = 1.5f;
     public void PrepareRound(int level)
     {

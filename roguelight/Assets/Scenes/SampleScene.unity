@@ -3400,9 +3400,9 @@ MonoBehaviour:
   InterestCeiling: 20
   ShopEntries:
   - LowerLevelThreshold: 0
-    UpperLevelThreshold: 3
+    UpperLevelThreshold: 5
     Item: {fileID: 11400000, guid: 040d5db570a33d948be3002d852e79e7, type: 2}
-  - LowerLevelThreshold: 0
+  - LowerLevelThreshold: 6
     UpperLevelThreshold: 5
     Item: {fileID: 11400000, guid: df9b72895a07b774490c117a7946ff81, type: 2}
   - LowerLevelThreshold: 0
@@ -3435,13 +3435,13 @@ MonoBehaviour:
   - LowerLevelThreshold: 1
     UpperLevelThreshold: 255
     Item: {fileID: 11400000, guid: 81b2a08fa4853bf488ab35e71969448c, type: 2}
-  - LowerLevelThreshold: 1
+  - LowerLevelThreshold: 6
     UpperLevelThreshold: 255
     Item: {fileID: 11400000, guid: 665707aa9a41c594e8203b4e19507f72, type: 2}
   - LowerLevelThreshold: 4
     UpperLevelThreshold: 255
     Item: {fileID: 11400000, guid: f7c39be70cf59cb47b6d9ccd6bffc195, type: 2}
-  - LowerLevelThreshold: 2
+  - LowerLevelThreshold: 4
     UpperLevelThreshold: 255
     Item: {fileID: 11400000, guid: 665707aa9a41c594e8203b4e19507f72, type: 2}
   - LowerLevelThreshold: 4
@@ -3480,6 +3480,9 @@ MonoBehaviour:
   - LowerLevelThreshold: 7
     UpperLevelThreshold: 255
     Item: {fileID: 11400000, guid: 0ed94d7630cdd1645a827a5c7c000741, type: 2}
+  - LowerLevelThreshold: 6
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: ea67396ee96ed204ba6b41ccb8c8d4ea, type: 2}
   State: 0
   Stats:
     TotalGold: 0
@@ -4305,14 +4308,14 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 249
+    width: 248
     height: 139
   _DisplayViewport:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 605
-    height: 340
+    width: 942
+    height: 530
 --- !u!1 &536523486
 GameObject:
   m_ObjectHideFlags: 0
@@ -16143,7 +16146,7 @@ MonoBehaviour:
   Luminosity: {fileID: 1989096814}
   MultiStrike: {fileID: 1989096816}
   MultiChance: {fileID: 1989096817}
-  Gold: 100
+  Gold: 0
   OilAffectsLightRange: 1
 --- !u!114 &1989096812
 MonoBehaviour:
@@ -16208,7 +16211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c1437c810377e45bd404806dc61aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _base: 2
+  _base: 0
 --- !u!114 &1989096817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16221,7 +16224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5ec6d3192af354a8980ad85f3cecc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _base: 100
+  _base: 0
 --- !u!1 &1995722513
 GameObject:
   m_ObjectHideFlags: 0

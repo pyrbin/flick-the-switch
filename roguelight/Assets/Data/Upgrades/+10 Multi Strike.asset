@@ -18,6 +18,6 @@ MonoBehaviour:
   AccentColor: {r: 0.24056602, g: 0.65874696, b: 1, a: 1}
   Type: 5
   Value: 10
-  GoldCost: 8
+  GoldCost: 4
   Modifier: 0
   OverrideDescription: 
