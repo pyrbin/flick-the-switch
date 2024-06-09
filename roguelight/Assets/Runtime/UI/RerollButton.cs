@@ -26,6 +26,7 @@ public class RerollButton : MonoBehaviour
 
     void OnClick()
     {
+        Player.Instance.OnClick(this.transform);
         if (Game.Instance is null || !Game.Instance.HasMoneyForReroll()) return;
         AudioManager.PlaySound(Audio.Sounds.ShopReroll);
         TweenTools.Shake(this.GetComponent<RectTransform>(), 0.666f, 1.5f);

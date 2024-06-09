@@ -109,6 +109,11 @@ public class RoundManager : MonoBehaviour
         CurrentRoundState.SpawnedEnemies.Clear();
     }
 
+    public void Reset()
+    {
+        TeardownRound();
+    }
+
     public bool CheckRoundState()
     {
         if (CurrentRoundState.SpawnedEnemiesCount == 0)

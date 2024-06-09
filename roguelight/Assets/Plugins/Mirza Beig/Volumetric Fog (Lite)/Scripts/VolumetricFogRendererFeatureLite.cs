@@ -84,6 +84,9 @@ namespace MirzaBeig.VolumetricFogLite
 
         public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
         {
+            if (renderingData.cameraData.camera.gameObject is null) {return;}
+            if (Camera.main.gameObject is null) {return;}
+
             bool enqueuePass = renderingData.cameraData.cameraType == CameraType.Game;
             enqueuePass |= renderingData.cameraData.cameraType == CameraType.Reflection;
             if (renderingData.cameraData.camera.gameObject != Camera.main.gameObject)

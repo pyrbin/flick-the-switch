@@ -22,6 +22,8 @@ public class UserInput : MonoBehaviour
         _camera = Camera.main;
     }
 
+    const float maxRange = 30f;
+
     public void OnClick(InputAction.CallbackContext context)
     {
         if (!context.started || _camera is null) return;
@@ -30,13 +32,27 @@ public class UserInput : MonoBehaviour
         int excludeLayerNumber = ExcludeLayer.value;
         int layerMask = ~excludeLayerNumber;
 
-        var hit = Physics2D.GetRayIntersection(ray, 30f, layerMask);
-        Debug.DrawRay(ray.origin, ray.direction * 30f, Color.red, 1f);
-        if (!hit.collider) return;
+        RayCast3D(ray, layerMask);
+        RayCast2D(ray, layerMask);
+    }
 
+    public void RayCast2D(Ray ray, int mask)
+    {
+        var hit = Physics2D.GetRayIntersection(ray, maxRange, mask);
+
+        if (!hit.collider) return;
         if (!hit.collider.TryGetComponent<Clickable>(out var clickable) && clickable != null && clickable.IsEnabled)
             return;
 
+        clickable!.Click(Cursor.Instance.transform);
+        OnClicked?.Invoke(hit.collider.transform);
+    }
+
+    public void RayCast3D(Ray ray, int mask)
+    {
+        if (!Physics.Raycast(ray, out var hit, maxRange, mask)) return;
+        if (!hit.collider.TryGetComponent<Clickable>(out var clickable) && clickable != null && clickable.IsEnabled)
+            return;
         clickable!.Click(Cursor.Instance.transform);
         OnClicked?.Invoke(hit.collider.transform);
     }
