@@ -1,3 +1,4 @@
+using JSAM;
 using UnityEngine;
 
 [RequireComponent(typeof(Clickable))]
@@ -37,6 +38,8 @@ public class Lamp : MonoBehaviour
                 });
             });
         });
+
+        AudioManager.PlaySound(Audio.Sounds.Lamp);
     }
 
 }

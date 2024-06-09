@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using JSAM;
 using Unity.Jobs.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -103,6 +104,7 @@ public class UpgradeItem
         if (DisableInput) return;
         if (IsShopItem)
         {
+            AudioManager.PlaySound(Audio.Sounds.ShopHover);
             this.transform.DOScale(_originalScale * 1.05f, animDuration);
             var thisRect = GetComponent<RectTransform>();
             thisRect.DOAnchorPos(thisRect.anchoredPosition + new Vector2(0, 4.25f), animDuration);
@@ -153,7 +155,10 @@ public class UpgradeItem
         if (DisableInput) return;
         if (!IsShopItem) return;
         if (Upgrade is null) return;
-        if (!Player.Instance.CanPurchase(Upgrade)) return;
+        if (!Player.Instance.CanPurchase(Upgrade)) {
+            AudioManager.PlaySound(Audio.Sounds.ClickFail);
+            return;
+        }
 
         Player.Instance.OnClick(this.transform);
         isClicking = false;

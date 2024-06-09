@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: +1 Damage
   m_EditorClassIdentifier: 
   Name: knuckles
-  Image: {fileID: 6221278880274769308, guid: 4252f135aa8e83c4ba695177daae56bf, type: 3}
+  Image: {fileID: -2225088216228324801, guid: 3d280cbb8e18900459f57eec612e9ada, type: 3}
   Color: {r: 1, g: 0, b: 0, a: 1}
   AccentColor: {r: 1, g: 0.3820755, b: 0.3820755, a: 1}
   Type: 0

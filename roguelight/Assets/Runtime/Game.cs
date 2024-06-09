@@ -1,3 +1,4 @@
+using JSAM;
 using UnityEngine;
 using Utilities.Extensions;
 
@@ -149,6 +150,8 @@ public class Game : MonoBehaviour
 
     public void EnterState(GameState state)
     {
+        AudioManager.StopAllMusic();
+        //AudioManager.StopAllSounds();
         switch (state)
         {
             case GameState.Menu:
@@ -160,6 +163,7 @@ public class Game : MonoBehaviour
                 HUD!.Hide();
                 Switch!.SetActive(true);
                 MainMenu!.Show();
+                AudioManager.PlayMusic(Audio.Music.Menu);
                 break;
             case GameState.Playing:
                 RoundExitLight!.SetActive(false);
@@ -173,6 +177,7 @@ public class Game : MonoBehaviour
                 HUD!.Show();
                 Player!.GetComponent<Oil>().SetFull();
                 UpdateRoomAndLightsOnRound(true);
+                AudioManager.PlayMusic(Audio.Music.Playing);
                 RoundManager.Instance.PrepareRound(CurrentLevel);
                 break;
             case GameState.Shop:
@@ -189,7 +194,7 @@ public class Game : MonoBehaviour
                 {
                     Shop.SpawnUpgradeItem(item);
                 }
-
+                AudioManager.PlayMusic(Audio.Music.Shop);
                 break;
             case GameState.GameOver:
                 RoundExitLight!.SetActive(false);
@@ -201,6 +206,7 @@ public class Game : MonoBehaviour
                 MainMenu!.SetForShop();
                 HUD!.SetForShop();
                 Switch!.SetActive(false);
+                AudioManager.PlayMusic(Audio.Music.GameOver);
                 break;
         }
     }

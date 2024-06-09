@@ -1,3 +1,4 @@
+using JSAM;
 using UnityEngine;
 
 [ExecuteAlways]
@@ -54,6 +55,7 @@ public class Switch : MonoBehaviour
     public void OnClick(Transform _cursor)
     {
         if (_locked) return;
+        AudioManager.PlaySound(Audio.Sounds.SwitchClick);
         IsOn = !IsOn;
         OnToggle?.Invoke(IsOn);
         UpdateVisuals();
