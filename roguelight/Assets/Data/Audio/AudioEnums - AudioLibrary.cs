@@ -14,7 +14,16 @@ namespace Audio {
         Beep,
         CoinPurse,
         EnemyBlueHit,
-        Hit
+        Hit,
+        Painting,
+        Plant,
+        Shelf,
+        WarningOil,
+        PICKUP_Buff,
+        PICKUP_Light,
+        PICKUP_Oil,
+        MaskTeleport,
+        SadGuyAngry
     }
 }
 namespace Audio {
