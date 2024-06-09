@@ -1,5 +1,4 @@
 using UnityEngine;
-using Shapes;
 
 [ExecuteAlways]
 public class Switch : MonoBehaviour

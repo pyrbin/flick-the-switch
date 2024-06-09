@@ -154,13 +154,14 @@ public class PixelateRenderFeature : ScriptableRendererFeature {
         ScaleFactor = math.max(MIN_SCALE_FACTOR, scaleFactor);
     }
 
+    // puke:
     private void CreateOverlayTexture()
     {
         if (OverlayUITexture is not null)
         {
             OverlayUITexture.Release();
-            OverlayUITexture.width = (int?)Camera?.DisplayViewport.width ?? Screen.width;
-            OverlayUITexture.height = (int?)Camera?.DisplayViewport.height ?? Screen.height;
+            OverlayUITexture.width = Mathf.Clamp(((int?)Camera?.DisplayViewport.width) ?? Screen.width, 10, 16384);
+            OverlayUITexture.height = Mathf.Clamp(((int?)Camera?.DisplayViewport.height) ?? Screen.height, 10, 16384);
             OverlayUITexture.depth = 32;
             OverlayUITexture.graphicsFormat = GraphicsFormat.R32G32B32A32_SFloat;
             OverlayUITexture.Create();
@@ -174,8 +175,8 @@ public class PixelateRenderFeature : ScriptableRendererFeature {
         if (OverlayCursorTexture is not null)
         {
             OverlayCursorTexture.Release();
-            OverlayCursorTexture.width = (int?)Camera?.RenderViewport.width ?? 480;
-            OverlayCursorTexture.height = (int?)Camera?.RenderViewport.height ?? 270;
+            OverlayCursorTexture.width = Mathf.Clamp((int?)Camera?.RenderViewport.width ?? 480, 10, 16384);
+            OverlayCursorTexture.height = Mathf.Clamp((int?)Camera?.RenderViewport.height ?? 270, 10, 16384);
             OverlayCursorTexture.depth = 32;
             OverlayCursorTexture.graphicsFormat = GraphicsFormat.R32G32B32A32_SFloat;
             OverlayCursorTexture.Create();
@@ -192,16 +193,16 @@ public class PixelateRenderFeature : ScriptableRendererFeature {
         if (OverlayUITexture is not null)
         {
             OverlayUITexture.Release();
-            OverlayUITexture.width = (int?)Camera?.DisplayViewport.width ?? Screen.width;
-            OverlayUITexture.height = (int?)Camera?.DisplayViewport.height ?? Screen.height;
+            OverlayUITexture.width = Mathf.Clamp(((int?)Camera?.DisplayViewport.width) ?? Screen.width, 10, 16384);
+            OverlayUITexture.height = Mathf.Clamp(((int?)Camera?.DisplayViewport.height) ?? Screen.height, 10, 16384);
             OverlayUITexture.Create();
         }
 
         if (OverlayCursorTexture is not null)
         {
             OverlayCursorTexture.Release();
-            OverlayCursorTexture.width = (int?)Camera?.RenderViewport.width ?? 480;
-            OverlayCursorTexture.height = (int?)Camera?.RenderViewport.height ?? 270;
+            OverlayCursorTexture.width = Mathf.Clamp((int?)Camera?.RenderViewport.width ?? 480, 10, 16384);
+            OverlayCursorTexture.height = Mathf.Clamp((int?)Camera?.RenderViewport.height ?? 270, 10, 16384);
             OverlayCursorTexture.Create();
         }
     }
