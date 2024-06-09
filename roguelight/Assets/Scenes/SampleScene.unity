@@ -3394,6 +3394,7 @@ MonoBehaviour:
   Light: {fileID: 1507808063}
   RoundContainer: {fileID: 1870757295}
   BackWall: {fileID: 1541221267}
+  BossLevel: 1
   BaseOilDepletionRate: 10
   RerollBaseCost: 2
   InterestRate: 4
@@ -4265,7 +4266,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 215
+    m_Bits: 727
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -4314,8 +4315,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 942
-    height: 530
+    width: 903
+    height: 508
 --- !u!1 &536523486
 GameObject:
   m_ObjectHideFlags: 0
@@ -7473,7 +7474,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -7504,7 +7505,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -27.37078, y: 0, z: -34.00994, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -12082,7 +12083,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -25}
+  m_AnchoredPosition: {x: 0, y: -30.1}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1.15, y: 0.5}
 --- !u!114 &1444737614
@@ -16211,7 +16212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c1437c810377e45bd404806dc61aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _base: 0
+  _base: 1
 --- !u!114 &1989096817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16224,7 +16225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5ec6d3192af354a8980ad85f3cecc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _base: 0
+  _base: 5
 --- !u!1 &1995722513
 GameObject:
   m_ObjectHideFlags: 0

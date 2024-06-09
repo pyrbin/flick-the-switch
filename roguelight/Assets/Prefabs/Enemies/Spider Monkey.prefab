@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Radius: 6
   Speed: 1
-  VerticalRange: 2
+  VerticalRange: 4
   VerticalSpeed: 1
   LookAheadTime: 0.1
   Clickable: {fileID: 0}

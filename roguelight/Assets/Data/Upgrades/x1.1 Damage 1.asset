@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de09c8721e537cc438cf1212d7855a95, type: 3}
   m_Name: x1.1 Damage 1
   m_EditorClassIdentifier: 
-  Name: knuckles
+  Name: rare knuckles
   Image: {fileID: -2225088216228324801, guid: 3d280cbb8e18900459f57eec612e9ada, type: 3}
   Color: {r: 1, g: 0, b: 0, a: 1}
   AccentColor: {r: 1, g: 0.3820755, b: 0.3820755, a: 1}

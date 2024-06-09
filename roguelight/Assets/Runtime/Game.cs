@@ -47,6 +47,9 @@ public class Game : MonoBehaviour
     public Transform? RoundContainer;
     public Transform? BackWall;
 
+    public int BossLevel = 8;
+    public bool IsDoingBoss => CurrentLevel == BossLevel && State == GameState.Playing;
+
     [Header("Gameplay")]
     public float BaseOilDepletionRate = 10f;
     public int RerollBaseCost = 2;
@@ -326,7 +329,10 @@ public class Game : MonoBehaviour
             RoundExitLight!.SetActive(true);
         }
 
-        Player!.GetComponent<Oil>().Reduce(OilDepletionRate * Time.deltaTime);
+        if (!IsDoingBoss)
+        {
+            Player!.GetComponent<Oil>().Reduce(OilDepletionRate * Time.deltaTime);
+        }
     }
 
     public void UpdateShop()

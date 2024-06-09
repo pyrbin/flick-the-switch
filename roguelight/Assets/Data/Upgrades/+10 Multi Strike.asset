@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de09c8721e537cc438cf1212d7855a95, type: 3}
   m_Name: +10 Multi Strike
   m_EditorClassIdentifier: 
-  Name: dice
-  Image: {fileID: 3738549579211321190, guid: 334cc68be75e32641afb4aeaa2602ec2, type: 3}
-  Color: {r: 0, g: 0.21875906, b: 1, a: 1}
-  AccentColor: {r: 0.24056602, g: 0.65874696, b: 1, a: 1}
+  Name: big lucky sword
+  Image: {fileID: 6221278880274769308, guid: 4252f135aa8e83c4ba695177daae56bf, type: 3}
+  Color: {r: 0.8584906, g: 0.0040494935, b: 0.6294273, a: 1}
+  AccentColor: {r: 0.9313648, g: 0.23820755, b: 0.9528302, a: 1}
   Type: 5
   Value: 10
   GoldCost: 4

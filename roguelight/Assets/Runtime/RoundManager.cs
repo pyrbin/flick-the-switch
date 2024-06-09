@@ -33,11 +33,9 @@ public class RoundManager : MonoBehaviour
 
     public static RoundManager Instance { get; private set; }
 
-    const int bossLevel = 8;
-
-    public float CalculateEnemyHealth() => 10 + (Game.Instance.CurrentLevel * 2) + (Game.Instance.CurrentLevel >= bossLevel ? Game.Instance.CurrentLevel.Pow(2) * 0.25f : 0f);
-
-    public int CalculateEnemySpawnRate() => Mathfs.FloorToInt(Freya.Random.Range(1, 3) + (Game.Instance.CurrentLevel >= bossLevel ? Freya.Random.Range(1, Game.Instance.CurrentLevel - 3)  : 0f));
+    // scalings xd
+    public float CalculateEnemyHealth() => 10 + (Game.Instance.CurrentLevel * 2) + (Game.Instance.CurrentLevel >= Game.Instance.BossLevel ? Game.Instance.CurrentLevel.Pow(2) * 0.25f : 0f);
+    public int CalculateEnemySpawnRate() => Mathfs.FloorToInt(Freya.Random.Range(1, 3) + (Game.Instance.CurrentLevel >= Game.Instance.BossLevel ? Freya.Random.Range(1, Game.Instance.CurrentLevel - 3)  : 0f));
     public int CalculatePickupSpawnRate() => Mathfs.FloorToInt(Freya.Random.Range(1, Mathfs.CeilToInt(Game.Instance.CurrentLevel/4) + 1));
 
     public void Awake()
@@ -62,7 +60,7 @@ public class RoundManager : MonoBehaviour
         state.SpawnedEnemies = new();
         state.SpawnedPickups = new();
 
-        if (level == bossLevel)
+        if (level == Game.Instance.BossLevel)
         {
             PrepareBossLevel();
             state.InitialEnemiesCount = state.SpawnedEnemies.Count;

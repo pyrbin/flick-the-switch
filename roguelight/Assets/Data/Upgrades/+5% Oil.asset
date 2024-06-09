@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de09c8721e537cc438cf1212d7855a95, type: 3}
   m_Name: +5% Oil
   m_EditorClassIdentifier: 
-  Name: flask
+  Name: magic tank
   Image: {fileID: -6821404291419221764, guid: ae6df7ca0c66e9c40b7389174b999055, type: 3}
   Color: {r: 0.06132078, g: 1, b: 0.34786487, a: 1}
-  AccentColor: {r: 0.3820755, g: 1, b: 0.6243988, a: 1}
+  AccentColor: {r: 0.3803922, g: 0.7215781, b: 1, a: 1}
   Type: 3
   Value: 0.05
   GoldCost: 10

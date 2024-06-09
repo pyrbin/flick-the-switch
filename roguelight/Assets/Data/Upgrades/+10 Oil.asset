@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de09c8721e537cc438cf1212d7855a95, type: 3}
   m_Name: +10 Oil
   m_EditorClassIdentifier: 
-  Name: flask
+  Name: big tank
   Image: {fileID: -6821404291419221764, guid: ae6df7ca0c66e9c40b7389174b999055, type: 3}
-  Color: {r: 0, g: 0.74509805, b: 0.2269567, a: 1}
-  AccentColor: {r: 0.5990566, g: 1, b: 0.75763965, a: 1}
+  Color: {r: 0.6037736, g: 0.4256896, b: 0.16233535, a: 1}
+  AccentColor: {r: 0.9245283, g: 0.73346144, b: 0.41429335, a: 1}
   Type: 3
   Value: 10
   GoldCost: 4

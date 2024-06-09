@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de09c8721e537cc438cf1212d7855a95, type: 3}
   m_Name: +5 Oil
   m_EditorClassIdentifier: 
-  Name: flask
+  Name: tank
   Image: {fileID: -6821404291419221764, guid: ae6df7ca0c66e9c40b7389174b999055, type: 3}
   Color: {r: 0, g: 0.74509805, b: 0.2269567, a: 1}
   AccentColor: {r: 0.5990566, g: 1, b: 0.75763965, a: 1}

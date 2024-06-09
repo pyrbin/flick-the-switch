@@ -43,7 +43,7 @@ public class SpiderMonkeyBehaviour : MonoBehaviour
 
     void MoveVertically()
     {
-        float targetY = _centerPosition.y + Freya.Random.Range(-VerticalRange, VerticalRange);
+        float targetY = _centerPosition.y + Freya.Random.Range(1f, VerticalRange);
 
         transform.DOMoveY(targetY, VerticalSpeed)
             .SetEase(Ease.InOutSine)
