@@ -12,7 +12,6 @@ public abstract class PoolBase : StatBase
 
     public override void Modify(ModifierMode mode, float value)
     {
-        var old = value;
         var oldPercentage = Current / Value;
         base.Modify(mode, value);
         Current = oldPercentage * Value;
@@ -32,6 +31,8 @@ public abstract class PoolBase : StatBase
     {
         Current = Mathfs.Clamp(Current, 0f, Value);
     }
+
+    public float AmountFromPercentage(float percentage) => percentage * Value;
 
     public float Percentage() => Mathfs.Clamp(Current / Value, 0f, 1f);
 

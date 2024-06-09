@@ -1,3 +1,5 @@
+using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
@@ -15,20 +17,21 @@ public class RoundManager : MonoBehaviour
     [Header("References")]
     public Transform RoundContainer;
     public BoxCollider? CloseSpawn;
-    public BoxCollider? FarSpawn;
 
     [Header("Gameplay")]
     [ReorderableList]
     public GameObject[] EnemyPrefabs;
-    public GameObject EnemyPrefab;
 
     private Rect CloseSpawnBounds = new();
-    private Rect FarSpawnBounds = new();
 
     [ShowNativeProperty]
-    public RoundState CurrentRoundState { get; private set; }
+    public RoundState CurrentRoundState { get; private set; } = new();
 
     public static RoundManager Instance { get; private set; }
+
+    public float CalculateEnemyHealth() => 13 + (Game.Instance.CurrentLevel * 2) + (Game.Instance.CurrentLevel > 5 ? Game.Instance.CurrentLevel.Pow(2) * 0.25f : 0f);
+
+    public int CalculateEnemySpawnRate() => Mathfs.FloorToInt(Freya.Random.Range(2, 3) + (Game.Instance.CurrentLevel >= 4 ? Freya.Random.Range(1, Game.Instance.CurrentLevel - 3)  : 0f));
 
     public void Awake()
     {
@@ -41,63 +44,70 @@ public class RoundManager : MonoBehaviour
         Instance = this;
 
         CloseSpawnBounds = Get2DSpawnBounds(CloseSpawn!.bounds);
-        FarSpawnBounds = Get2DSpawnBounds(FarSpawn!.bounds);
     }
 
+    const int bossLevel = 5;
+    const float reserveSize = 1.5f;
     public void PrepareRound(int level)
     {
-        const float reserveSize = 1.5f;
-
         RoundState state = new();
         state.Level = level;
         state.SpawnedEnemies = new();
 
-        List<Rect> reservedCloseAreas = new();
-        List<Rect> reservedFarAreas = new();
-
-        const int testMobs = 2;
-        for (int i = 0; i < testMobs ; i++)
+        if (level == bossLevel)
         {
-            Vector2 spawnPosition;
-            bool positionFound = false;
+            PrepareBossLevel();
+            state.InitialEnemiesCount = state.SpawnedEnemies.Count;
+            CurrentRoundState = state;
+            return;
+        }
 
-            while (!positionFound)
-            {
-                spawnPosition = GetRandomPointInBounds(CloseSpawnBounds);
-                Rect potentialArea = new Rect(spawnPosition.x - reserveSize / 2, spawnPosition.y - reserveSize / 2, reserveSize, reserveSize);
-
-                if (!IsAreaReserved(potentialArea, ref reservedCloseAreas))
-                {
-                    reservedCloseAreas.Add(potentialArea);
-                    var spawnPosition3 = new float3(spawnPosition.x, -1f, spawnPosition.y);
-                    var enemy = Instantiate(EnemyPrefab, spawnPosition3, Quaternion.identity, RoundContainer);
-
-                    state.SpawnedEnemies.Add(enemy);
-                    positionFound = true;
-                }
-            }
+        for (int i = 0; i < CalculateEnemySpawnRate(); i++)
+        {
+            var spawnPosition = RequestSpawnPosition();
+            var randomMonster = Freya.Random.Range(0, EnemyPrefabs.Length);
+            var enemyPrefab = EnemyPrefabs[randomMonster];
+            var enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity, RoundContainer);
+            var hp = enemy.GetComponent<Health>();
+            hp._base = CalculateEnemyHealth();
+            state.SpawnedEnemies.Add(enemy);
         }
         state.InitialEnemiesCount = state.SpawnedEnemies.Count;
-
         CurrentRoundState = state;
     }
 
-    public void SpawnRoundEntity()
+    private int _bossLevelPhase = 1;
+    public void PrepareBossLevel()
     {
-        // Examples of interactable:
-            // Coin Purse
-            // Oil Lantern
-            // Falling Stone
-            // Mud (slows cursor)
-        // RollForEnemyOrInteractable() (interactable: max 3, min 1)
 
-        // If Enemy:
-        // RollForEnemySkin
-        // RollForEnemyBehavior (Circle, Jumping, Moving, Flying)
-        // RollForEnemyAffix (Teleport, Spiky, Screaming, Baby)
-        // RollForEnemyHealth (level + skinMod + affixMod)
-        // RollForEnemyGold (level + healthMod + skinMod + affixMod)
-        // RollForPosition
+    }
+
+    List<Rect> ReservedAreas = new();
+    public float3 RequestSpawnPosition()
+    {
+        Vector2 spawnPosition;
+        bool positionFound = false;
+        const int maxTry = 20;
+        var i = 0;
+        while (!positionFound)
+        {
+            if (i > maxTry)
+            {
+                return float3.zero;
+            }
+            spawnPosition = GetRandomPointInBounds(CloseSpawnBounds);
+            Rect potentialArea = new Rect(spawnPosition.x - reserveSize / 2, spawnPosition.y - reserveSize / 2, reserveSize, reserveSize);
+
+            if (!IsAreaReserved(potentialArea, ref ReservedAreas))
+            {
+                ReservedAreas.Add(potentialArea);
+                return new float3(spawnPosition.x, -1f, spawnPosition.y);
+            }
+
+            i++;
+        }
+
+        return float3.zero;
     }
 
     public void TeardownRound()
@@ -126,7 +136,7 @@ public class RoundManager : MonoBehaviour
 
     public void RemoveFromState(GameObject enemy)
     {
-        CurrentRoundState.SpawnedEnemies.Remove(enemy);
+        CurrentRoundState.SpawnedEnemies?.Remove(enemy);
     }
 
     bool IsAreaReserved(Rect area, ref List<Rect> reservedAreas)

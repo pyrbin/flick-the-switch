@@ -10,7 +10,7 @@ public enum ModifierMode
 public abstract class StatBase : MonoBehaviour
 {
     [SerializeField]
-    private float _base;
+    public float _base;
 
     private float _multiplier = 0f;
     private float _flat = 0f;

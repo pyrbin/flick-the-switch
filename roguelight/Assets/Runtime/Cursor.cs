@@ -3,10 +3,10 @@ using UnityEngine;
 public class Cursor : MonoBehaviour
 {
     public Light? Light;
-    public Transform? CursorGfx;
     public LayerMask IncludeLayer;
     public bool HideCursor = false;
     public RectTransform? CursorRectTransform;
+    public Transform? CursorCollider;
 
     [Header("Light Position")]
     [Range(-10f, 10f)]
@@ -48,7 +48,6 @@ public class Cursor : MonoBehaviour
 
         Instance = this;
 
-        Assert.IsFalse(CursorGfx is null);
         Assert.IsFalse(Light is null);
         _camera = Camera.main;
         Assert.IsFalse(_camera is null);
@@ -83,7 +82,9 @@ public class Cursor : MonoBehaviour
 
         var y = YOffset + hit.point.y;
         var x = XOffset + hit.point.x;
+
         Light!.transform.position = new float3(x, y, hit.transform.position.z);
+        CursorCollider!.transform.position = new float3(x, y, hit.transform.position.z);
 
         var colliderBounds = hit.collider!.bounds;
         float yHit = Mathfs.Clamp01((hit.point.y - colliderBounds.min.y) / colliderBounds.size.y);
@@ -109,20 +110,7 @@ public class Cursor : MonoBehaviour
     {
         var mousePosition = new float3(Input.mousePosition.x, Input.mousePosition.y, 1f);
         WorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-        // CursorGfx!.transform.position = WorldPosition;
-
-
         RectTransformUtility.ScreenPointToLocalPointInRectangle(CursorRectTransform.parent.GetComponent<RectTransform>(), mousePosition.xy, Camera.main, out var localPoint);
-		// RectTransformUtility.ScreenPointToRay(rectTransform, screen_pos, canvas.worldCamera, out anchorPos);
-        var ndc = NormalizedNdc();
-        float2 pos = new();
-        pos.x = ndc.x * Screen.width;
-        pos.y = ndc.y * Screen.height;
-
         CursorRectTransform.anchoredPosition = localPoint;
-
-        // CursorRectTransform!.position = WorldPosition;
-        CursorGfx!.transform.position = WorldPosition;
     }
 }

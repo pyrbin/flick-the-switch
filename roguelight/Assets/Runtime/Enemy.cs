@@ -4,28 +4,17 @@ using UnityEngine;
 [RequireComponent(typeof(Clickable))]
 public class Enemy : MonoBehaviour
 {
-    public EnemyAudio enemyAudio;
+    public MonsterData Data;
+    public EnemyAudio EnemyAudio;
     public Health? Health;
     public GoldReward? GoldReward;
+    public Transform? ShakePivot;
 
     [ReadOnly]
     public Clickable? Clickable;
 
-    // private Material _material;
-    // private Color _originalColor;
-
     public bool IsDying { get; private set; } = false;
     public bool IsDead { get; private set; } = false;
-
-    public void Start()
-    {
-        // var renderer = GetComponentInChildren<MeshRenderer>();
-        // if (renderer != null)
-        // {
-        //     _material = renderer.material;
-        //     _originalColor = _material.GetColor("_BaseColor");
-        // }
-    }
 
     public void OnEnable()
     {
@@ -51,22 +40,12 @@ public class Enemy : MonoBehaviour
         Clickable!.IsEnabled = !IsDead && !IsDying;
     }
 
-    private float _timeSinceHit = 0;
-
     public void OnClick(Transform _cursor)
     {
         if (IsDying || IsDead) return;
-        enemyAudio.PlayHitSound();
+        EnemyAudio.PlayHitSound();
         AudioManager.PlaySound(Audio.Sounds.Hit);
-
-        TweenTools.Shake2(transform, animDuration);
-
-        _timeSinceHit = 0.0f;
-
-        // if (_material != null)
-        // {
-        //     _material.SetColor("_BaseColor", Color.red);
-        // }
+        TweenTools.Shake2(ShakePivot!, animDuration);
     }
 
     public void OnHealthDepleted()
@@ -85,7 +64,7 @@ public class Enemy : MonoBehaviour
     public void Kill()
     {
         Player.Instance.NotifyKilled(this.transform);
-        enemyAudio.PlayDeathSound();
+        EnemyAudio.PlayDeathSound();
         IsDead = true;
         transform.DOKill();
         Player.Instance.AddGold((int)GoldReward!.Value);

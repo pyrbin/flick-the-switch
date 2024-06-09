@@ -48,7 +48,7 @@ public class Game : MonoBehaviour
     public Transform? BackWall;
 
     [Header("Gameplay")]
-    public float OilDepletionRate = 0.1f;
+    public float BaseOilDepletionRate = 10f;
     public int RerollBaseCost = 2;
     public int InterestRate = 4;
     public int InterestCeiling = 20;
@@ -61,6 +61,9 @@ public class Game : MonoBehaviour
 
     [ShowNativeProperty]
     public int CurrentRerollCost => RerollBaseCost + RerollBaseCost * _rerollCount;
+
+    [ShowNativeProperty]
+    public float OilDepletionRate =>  BaseOilDepletionRate + (2 * CurrentLevel);
 
     private int _rerollCount = 0;
 
@@ -287,7 +290,7 @@ public class Game : MonoBehaviour
         }
 
         UniTask.Void(async () => {
-            await UniTask.Delay(TimeSpan.FromSeconds(0.2), ignoreTimeScale: false);
+            await UniTask.Delay(TimeSpan.FromSeconds(0.5f), ignoreTimeScale: false);
             SetState(GameState.Playing);
         });
     }
@@ -323,7 +326,7 @@ public class Game : MonoBehaviour
             RoundExitLight!.SetActive(true);
         }
 
-        Player!.GetComponent<Oil>().Reduce(OilDepletionRate);
+        Player!.GetComponent<Oil>().Reduce(OilDepletionRate * Time.deltaTime);
     }
 
     public void UpdateShop()

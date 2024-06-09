@@ -87,6 +87,16 @@ public class Player : MonoBehaviour
         GoldChanged?.Invoke(amount, GoldChangedMode.Removed);
     }
 
+    public void ReduceOil(float amount)
+    {
+        Player.Instance.Oil.Reduce(amount);
+    }
+
+    public void AddOil(float amount)
+    {
+        Player.Instance.Oil.Increase(amount);
+    }
+
     public bool CanPurchase(Upgrade upgrade) => Gold >= upgrade!.GoldCost;
 
     public void AddToInventory(UpgradeItem item)
@@ -142,7 +152,7 @@ public class Player : MonoBehaviour
 
     public void OnClick(Transform target)
     {
-        TweenTools.Shake(Cursor.Instance!.CursorGfx!.GetChild(0).transform, 0.25f, 0.05f);
+        TweenTools.Shake(Cursor.Instance!.CursorRectTransform!.GetChild(0).GetComponent<RectTransform>(), 0.33f, 14.55f);
 
         if (target.TryGetComponent<Health>(out var health))
         {
@@ -160,7 +170,7 @@ public class Player : MonoBehaviour
         _params.Color = Color.yellow; // calculate based on hit
         _params.FontSize = FloatingCombatText.FontSize.Small;
 
-        var offset = new Vector3(1f, 3f, 0);
+        var offset = new Vector3(0.6f, 2f, 0);
         FloatingText.Instance.Show(target.transform.position + offset, ref _params);
     }
 
