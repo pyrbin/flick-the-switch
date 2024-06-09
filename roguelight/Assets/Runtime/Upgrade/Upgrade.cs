@@ -21,19 +21,41 @@ public class Upgrade : ScriptableObject
         ? OverrideDescription
         : Type.ToString() + (Value > 0 ? " +" : "-") + (Modifier == ModifierMode.Mult ? $"{Value*100}%" : Value)).ToLowerInvariant();
 
+    private float _RealValue = 0;
+
     public void ApplyStats(GameObject obj)
     {
+
+
         AudioManager.PlaySound(Audio.Sounds.ShopUpgrade);
         var statComponent = StatLookup.Get(Type, obj);
         if (statComponent.IsNone()) return;
-        statComponent.OrDefault()!.Modify(Modifier, Value);
+
+        if (Type == StatType.MultiChance && Modifier == ModifierMode.Flat)
+        {
+            var stat = statComponent.OrDefault()!;
+            var remainder = 100 - stat.Value;
+            var real = (Value / 100) * remainder;
+            _RealValue = real;
+            statComponent.OrDefault()!.Modify(Modifier, _RealValue);
+
+        } else {
+            statComponent.OrDefault()!.Modify(Modifier, Value);
+        }
+
     }
 
     public void RemoveStats(GameObject obj)
     {
         var statComponent = StatLookup.Get(Type, obj);
         if (statComponent.IsNone()) return;
-        statComponent.OrDefault()!.Modify(Modifier, -Value);
+
+        if (Type == StatType.MultiChance && Modifier == ModifierMode.Flat)
+        {
+            statComponent.OrDefault()!.Modify(Modifier, -_RealValue);
+        } else {
+            statComponent.OrDefault()!.Modify(Modifier, -Value);
+        }
     }
     public virtual void AddCustomSetup(GameObject Target) {}
     public virtual void RemoveCustomSetup(GameObject Target) {}

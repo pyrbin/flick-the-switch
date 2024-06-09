@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735bf25af6f471e4b9fbd39cf699e98a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 7
+  Radius: 6
   Speed: 1
   VerticalRange: 2
   VerticalSpeed: 1

@@ -22,7 +22,7 @@ public class UserInput : MonoBehaviour
         _camera = Camera.main;
     }
 
-    const float maxRange = 30f;
+    const float maxRange = 40f;
 
     public void OnClick(InputAction.CallbackContext context)
     {

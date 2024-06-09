@@ -7,7 +7,9 @@ public enum StatType
     GoldReward,
     Luminosity,
     Oil,
-    Health
+    Health,
+    MultiStrike,
+    MultiChance,
 }
 
 // THis is so bad xD
@@ -22,6 +24,8 @@ public static class StatLookup
             StatType.Luminosity => obj.TryGetComponent<Luminosity>(out var luminosity) ? luminosity as StatBase : Option<StatBase>.None,
             StatType.Oil => obj.TryGetComponent<Oil>(out var oil) ? oil as StatBase : Option<StatBase>.None,
             StatType.Health => obj.TryGetComponent<Health>(out var health) ? health as StatBase : Option<StatBase>.None,
+            StatType.MultiStrike => obj.TryGetComponent<MultiStrike>(out var strike) ? strike as StatBase : Option<StatBase>.None,
+            StatType.MultiChance => obj.TryGetComponent<MultiChance>(out var strike) ? strike as StatBase : Option<StatBase>.None,
             _ => Option<StatBase>.None
         };
     }

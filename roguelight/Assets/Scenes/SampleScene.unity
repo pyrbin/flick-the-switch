@@ -3400,19 +3400,19 @@ MonoBehaviour:
   InterestCeiling: 20
   ShopEntries:
   - LowerLevelThreshold: 0
-    UpperLevelThreshold: 5
+    UpperLevelThreshold: 3
     Item: {fileID: 11400000, guid: 040d5db570a33d948be3002d852e79e7, type: 2}
   - LowerLevelThreshold: 0
     UpperLevelThreshold: 5
     Item: {fileID: 11400000, guid: df9b72895a07b774490c117a7946ff81, type: 2}
   - LowerLevelThreshold: 0
-    UpperLevelThreshold: 5
+    UpperLevelThreshold: 6
     Item: {fileID: 11400000, guid: 22e83e62c9283204da32b19c52c853c6, type: 2}
   - LowerLevelThreshold: 0
     UpperLevelThreshold: 5
     Item: {fileID: 11400000, guid: 81b2a08fa4853bf488ab35e71969448c, type: 2}
   - LowerLevelThreshold: 3
-    UpperLevelThreshold: 5
+    UpperLevelThreshold: 3
     Item: {fileID: 11400000, guid: ad7852a7d876d56498a46bf392af2ba4, type: 2}
   - LowerLevelThreshold: 3
     UpperLevelThreshold: 100
@@ -3435,6 +3435,51 @@ MonoBehaviour:
   - LowerLevelThreshold: 1
     UpperLevelThreshold: 255
     Item: {fileID: 11400000, guid: 81b2a08fa4853bf488ab35e71969448c, type: 2}
+  - LowerLevelThreshold: 1
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: 665707aa9a41c594e8203b4e19507f72, type: 2}
+  - LowerLevelThreshold: 4
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: f7c39be70cf59cb47b6d9ccd6bffc195, type: 2}
+  - LowerLevelThreshold: 2
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: 665707aa9a41c594e8203b4e19507f72, type: 2}
+  - LowerLevelThreshold: 4
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: 0ed94d7630cdd1645a827a5c7c000741, type: 2}
+  - LowerLevelThreshold: 2
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: f6de0a61399d8ca4f81c6782a87ec53c, type: 2}
+  - LowerLevelThreshold: 4
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: 665707aa9a41c594e8203b4e19507f72, type: 2}
+  - LowerLevelThreshold: 4
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: 656cc12af60ece548a73e30152747f60, type: 2}
+  - LowerLevelThreshold: 5
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: df9b72895a07b774490c117a7946ff81, type: 2}
+  - LowerLevelThreshold: 3
+    UpperLevelThreshold: 6
+    Item: {fileID: 11400000, guid: ad7852a7d876d56498a46bf392af2ba4, type: 2}
+  - LowerLevelThreshold: 5
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: 040d5db570a33d948be3002d852e79e7, type: 2}
+  - LowerLevelThreshold: 5
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: 040d5db570a33d948be3002d852e79e7, type: 2}
+  - LowerLevelThreshold: 5
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: 96b04161c65cb24449ed90f810f75afe, type: 2}
+  - LowerLevelThreshold: 5
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: 257092756033cd04687ba0ccf3fa262d, type: 2}
+  - LowerLevelThreshold: 3
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: 665707aa9a41c594e8203b4e19507f72, type: 2}
+  - LowerLevelThreshold: 7
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: 0ed94d7630cdd1645a827a5c7c000741, type: 2}
   State: 0
   Stats:
     TotalGold: 0
@@ -4260,14 +4305,14 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 299
+    width: 249
     height: 139
   _DisplayViewport:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1101
-    height: 514
+    width: 605
+    height: 340
 --- !u!1 &536523486
 GameObject:
   m_ObjectHideFlags: 0
@@ -5550,7 +5595,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &645740885
 Transform:
   m_ObjectHideFlags: 0
@@ -9992,7 +10037,7 @@ Transform:
   m_GameObject: {fileID: 1226715206}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.25, y: -0.99, z: 5.33}
+  m_LocalPosition: {x: 1.69, y: -0.99, z: 4.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -10017,8 +10062,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 17.581118, y: 15, z: 0.01}
-  m_Center: {x: -1.2094412, y: 0, z: 0}
+  m_Size: {x: 16.939941, y: 13.850812, z: 0.01}
+  m_Center: {x: -1.5300293, y: 0.57459426, z: 1.0600499e-15}
 --- !u!1 &1226900350
 GameObject:
   m_ObjectHideFlags: 0
@@ -12286,7 +12331,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -16043,6 +16088,8 @@ GameObject:
   - component: {fileID: 1989096813}
   - component: {fileID: 1989096812}
   - component: {fileID: 1989096815}
+  - component: {fileID: 1989096817}
+  - component: {fileID: 1989096816}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -16094,6 +16141,8 @@ MonoBehaviour:
   Oil: {fileID: 1989096810}
   Damage: {fileID: 1989096813}
   Luminosity: {fileID: 1989096814}
+  MultiStrike: {fileID: 1989096816}
+  MultiChance: {fileID: 1989096817}
   Gold: 100
   OilAffectsLightRange: 1
 --- !u!114 &1989096812
@@ -16147,6 +16196,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oil: {fileID: 1989096810}
+--- !u!114 &1989096816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989096808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c1437c810377e45bd404806dc61aa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _base: 2
+--- !u!114 &1989096817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989096808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d5ec6d3192af354a8980ad85f3cecc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _base: 100
 --- !u!1 &1995722513
 GameObject:
   m_ObjectHideFlags: 0
@@ -16847,6 +16922,10 @@ MonoBehaviour:
   - {fileID: 4417743880907137797, guid: 7854e5c71e6364d418c10a1bc3218430, type: 3}
   - {fileID: 6364603961756699501, guid: 34738452ac62d484390e061d3bc05d14, type: 3}
   - {fileID: 3602690737077827683, guid: 7890b82e647496f42b3b69ae369f7289, type: 3}
+  PickupsPrefabs:
+  - {fileID: 201746748819128250, guid: 6aec2a0b9d2e8804ca9ecf0da1d4bd77, type: 3}
+  - {fileID: 5515532045311593335, guid: 36d7cbe45288c88409c8da124e56d47c, type: 3}
+  - {fileID: 201746748819128250, guid: 6aec2a0b9d2e8804ca9ecf0da1d4bd77, type: 3}
 --- !u!1 &2069266136
 GameObject:
   m_ObjectHideFlags: 0
@@ -17067,7 +17146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ExcludeLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 832
 --- !u!114 &2075495854
 MonoBehaviour:
   m_ObjectHideFlags: 0

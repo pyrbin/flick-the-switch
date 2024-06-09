@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     public Oil? Oil;
     public Damage? Damage;
     public Luminosity? Luminosity;
+    public MultiStrike? MultiStrike;
+    public MultiChance? MultiChance;
 
     [Header("Gameplay")]
     public int Gold = 0;
@@ -43,6 +45,8 @@ public class Player : MonoBehaviour
         TryGetComponent(out Oil);
         TryGetComponent(out Damage);
         TryGetComponent(out Luminosity);
+        TryGetComponent(out MultiStrike);
+        TryGetComponent(out MultiChance);
     }
 
     public void Start()
@@ -51,8 +55,6 @@ public class Player : MonoBehaviour
             UserInput.Instance.OnClicked += OnClick;
     }
 
-    private float _flickerTimer = 0f;
-    private bool _shouldFlicker;
     public void Update()
     {
         if (Luminosity is not null && Cursor.Instance?.Light is not null && Cursor.Instance.EnableLights)
@@ -164,14 +166,25 @@ public class Player : MonoBehaviour
     private FloatingTextParams _params = new();
     public void RollForDamage(Health target)
     {
-        var damage = Damage!.Value;
+        var damage = Mathfs.CeilToInt(Damage!.Value* Freya.Random.Range(0.8f, 1.1f));
         target.Reduce(damage);
+
+        var offset = new Vector3(0.6f, 2f, 0);
 
         _params.Text = damage.ToString(); // format based on type
         _params.Color = Color.yellow; // calculate based on hit
         _params.FontSize = FloatingCombatText.FontSize.Small;
+        FloatingText.Instance.Show(target.transform.position + offset, ref _params);
 
-        var offset = new Vector3(0.6f, 2f, 0);
+        if (target.Percentage() <= 0.0) return;
+
+        if (!(Freya.Random.Range(0f, 1f) < (MultiChance.Value / 100f))) return;
+
+        var multiStrikeDamage = Mathfs.CeilToInt((Damage!.Value + MultiStrike.Value) * Freya.Random.Range(0.8f, 1.1f));
+        target.Reduce(multiStrikeDamage);
+        _params.Text = damage.ToString() + "!!!"; // format based on type
+        _params.Color = Color.blue; // calculate based on hit
+        _params.FontSize = FloatingCombatText.FontSize.Medium;
         FloatingText.Instance.Show(target.transform.position + offset, ref _params);
     }
 

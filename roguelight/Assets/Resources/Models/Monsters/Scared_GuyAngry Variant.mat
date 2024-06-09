@@ -31,6 +31,8 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
+    - _AlphaToMask: 0
+    - _BUILTIN_QueueControl: 1
     - _IRIDESCENCE: 1
     - _QueueControl: 1
     - _TEXTURE_TRANSFORM: 1

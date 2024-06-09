@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
         RoundManager.Instance.RemoveFromState(this.gameObject);
 
         UniTask.Void(async () => {
-            await UniTask.Delay(TimeSpan.FromSeconds(0.333), ignoreTimeScale: false);
+            await UniTask.Delay(TimeSpan.FromSeconds(0.2), ignoreTimeScale: false);
             Kill();
         });
     }
@@ -66,6 +66,7 @@ public class Enemy : MonoBehaviour
         Player.Instance.NotifyKilled(this.transform);
         EnemyAudio.PlayDeathSound();
         IsDead = true;
+        transform.DOComplete();
         transform.DOKill();
         Player.Instance.AddGold((int)GoldReward!.Value);
         Destroy(gameObject);

@@ -1,4 +1,5 @@
 using JSAM;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 using Utilities.Extensions;
 
@@ -29,12 +30,11 @@ public class ScaredGuyBehaviour : MonoBehaviour
     bool swapped = false;
     bool isAngry = false;
     const float angryThreshold = 0.5f;
-    const float angryDuration = 3f;
     public void OnClick(Transform _cursor)
     {
         if (isAngry)
         {
-            Player.Instance.ReduceOil(Player.Instance.Oil.AmountFromPercentage(0.1f));
+            Player.Instance.ReduceOil(Player.Instance.Oil.AmountFromPercentage(0.05f));
             OnDeflectParticles.Play();
         }
 
@@ -53,12 +53,13 @@ public class ScaredGuyBehaviour : MonoBehaviour
         AngryModel.SetActive(true);
 
         AudioManager.PlaySound(Audio.Sounds.SadGuyAngry);
-        TweenTools.Shake2(AngryModel.transform, angryDuration, 1.2f);
+        var duration = Game.Instance.CurrentLevel > 5 ? 2f : 1.5f;
+        TweenTools.Shake2(AngryModel.transform, duration, 1.2f);
         isAngry = true;
 
         UniTask.Void(async () => {
             WhenAngryParticles.Play();
-            await UniTask.Delay(TimeSpan.FromSeconds(angryDuration), ignoreTimeScale: false);
+            await UniTask.Delay(TimeSpan.FromSeconds(duration), ignoreTimeScale: false);
             isAngry = false;
             WhenAngryParticles?.Stop();
             NormalModel?.SetActive(true);
