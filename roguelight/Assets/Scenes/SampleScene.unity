@@ -3760,8 +3760,8 @@ MonoBehaviour:
   Light: {fileID: 1507808063}
   RoundContainer: {fileID: 1870757295}
   BackWall: {fileID: 1541221267}
-  BossLevel: 9
-  BaseOilDepletionRate: 10
+  BossLevel: 10
+  BaseOilDepletionRate: 8.32
   RerollBaseCost: 2
   InterestRate: 4
   InterestCeiling: 20
@@ -4766,7 +4766,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.99999994
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -4820,13 +4820,13 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 248
-    height: 139
+    height: 140
   _DisplayViewport:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 636
-    height: 358
+    width: 849
+    height: 478
 --- !u!1 &536523486
 GameObject:
   m_ObjectHideFlags: 0

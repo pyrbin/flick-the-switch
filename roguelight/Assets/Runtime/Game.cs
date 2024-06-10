@@ -67,7 +67,7 @@ public class Game : MonoBehaviour
     public int CurrentRerollCost => RerollBaseCost + RerollBaseCost * _rerollCount;
 
     [ShowNativeProperty]
-    public float OilDepletionRate =>  BaseOilDepletionRate + ((CurrentLevel > BossLevel ? 2f : 0.9f) * CurrentLevel) ;
+    public float OilDepletionRate =>  BaseOilDepletionRate + ((CurrentLevel > BossLevel ? 2f : 0.65f) * CurrentLevel) ;
 
     private int _rerollCount = 0;
 

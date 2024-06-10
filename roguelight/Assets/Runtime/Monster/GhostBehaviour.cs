@@ -30,8 +30,8 @@ public class GhostBehaviour : MonoBehaviour
         transform.position = new Vector3(transform.position.x, randomHeight, transform.position.z);
     }
 
-    const float teleportChance = 0.38f;
-    const float teleportHealthThreshold = 0.5f;
+    const float teleportChance = 0.99f;
+    const float teleportHealthThreshold = 0.6f;
     bool _teleported = false;
     public void OnClick(Transform _cursor)
     {

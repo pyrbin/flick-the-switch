@@ -251,7 +251,7 @@ public class RoundManager : MonoBehaviour
         _barrels.Add(barrel);
     }
 
-    const float spawnRate = 1f;
+    const float spawnRate = .75f;
     private float elapsedTime = 0;
     void Update()
     {
