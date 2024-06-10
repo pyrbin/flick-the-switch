@@ -31,6 +31,7 @@ namespace Audio {
         Menu,
         Playing,
         GameOver,
-        Shop
+        Shop,
+        Boss
     }
 }

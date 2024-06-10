@@ -88,6 +88,7 @@ MonoBehaviour:
   Health: {fileID: 2328625479328515903}
   GoldReward: {fileID: 1170532727195799688}
   ShakePivot: {fileID: 3910204265125743565}
+  DestroyOnDeath: 1
   Clickable: {fileID: 0}
 --- !u!114 &1170532727195799688
 MonoBehaviour:
@@ -201,7 +202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3910990755373119420, guid: c603b7987fcca554fa2d150bab754782, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.625
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: -3910990755373119420, guid: c603b7987fcca554fa2d150bab754782, type: 3}
       propertyPath: m_LocalPosition.z

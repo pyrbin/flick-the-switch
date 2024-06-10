@@ -9,26 +9,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfb8002b44af6934a9ae327c8311d458, type: 3}
-  m_Name: Boss
+  m_Script: {fileID: 11500000, guid: 0d15ae218647a2d4f85e14306846c10c, type: 3}
+  m_Name: Earthquake
   m_EditorClassIdentifier: 
   safeName: 
   presetDescription: 
   files:
-  - {fileID: 8300000, guid: 6b4c02a1d10f011488624632e6954c17, type: 3}
+  - {fileID: 8300000, guid: 9996ac5af24970d46b5f99b038b24b3b, type: 3}
   loopStart: 0
-  loopEnd: 20.307688
+  loopEnd: 0
   bpm: 120
   relativeVolume: 1
   spatialize: 0
   maxDistance: 0
   priority: 128
   startingPitch: 1
-  pitchShift: 0.05
-  loopMode: 1
+  pitchShift: 0
+  loopMode: 0
   delay: 0
   ignoreTimeScale: 0
-  maxPlayingInstances: 10
+  maxPlayingInstances: 1
   channelOverride: 0
   mixerGroupOverride: {fileID: 0}
   fadeInOut: 0
@@ -80,5 +80,5 @@ MonoBehaviour:
     lFReference: 0
     diffusion: 0
     density: 0
-  neverRepeat: 0
+  neverRepeat: 1
   lastClipIndex: -1

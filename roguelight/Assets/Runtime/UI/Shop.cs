@@ -12,6 +12,12 @@ public class Shop : MonoBehaviour
     public UpgradeItem SpawnedUpgradeItemPrefab;
     public RectTransform HolderPrefab;
 
+    public TMPro.TMP_Text? DmgText;
+    public TMPro.TMP_Text? OilText;
+    public TMPro.TMP_Text? MultiDmgText;
+    public TMPro.TMP_Text? MultiChanceText;
+    public TMPro.TMP_Text? CurrentLevelText;
+
     public int ShopItemCount => SpawnedUpgradeItems.Count;
 
     public bool HasItems => SpawnedUpgradeItems.Count > 0;
@@ -63,5 +69,14 @@ public class Shop : MonoBehaviour
         }
 
         SpawnedUpgradeItems.Clear();
+    }
+
+    public void Update()
+    {
+        DmgText.text = StatLookup.NameOf(StatType.Damage) + ": " + Player.Instance.Damage.Value.RoundToInt();
+        OilText.text = StatLookup.NameOf(StatType.Oil) + ": " + Player.Instance.Oil.Value.RoundToInt();
+        MultiDmgText.text = StatLookup.NameOf(StatType.MultiDmg) + ": " + Player.Instance.MultiStrike.Value.RoundToInt();
+        MultiChanceText.text = StatLookup.NameOf(StatType.MultiChance) + ": " + Player.Instance.MultiChance.Value.RoundToInt() + "%";
+        CurrentLevelText.text = "next level: " + Game.Instance.CurrentLevel + 1;
     }
 }

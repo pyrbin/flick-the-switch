@@ -312,7 +312,7 @@ MonoBehaviour:
     - line: '|   - m_BuildTarget: '
     - line: '|     m_Icons:'
     - line: '|     - serializedVersion: 2'
-    - line: '|       m_Icon: {fileID: 2800000, guid: 1307f7d460def4f48868e6466d2034dd,
+    - line: '|       m_Icon: {fileID: 2800000, guid: eae836d92993c4e45b9429afaa8cc083,
         type: 3}'
     - line: '|       m_Width: 128'
     - line: '|       m_Height: 128'

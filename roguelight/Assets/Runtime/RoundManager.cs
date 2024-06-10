@@ -1,15 +1,20 @@
 using JetBrains.Annotations;
+using JSAM;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[Serializable]
+[System.Serializable]
 public struct RoundState
 {
     public int Level;
+    [SerializeField]
     public List<GameObject> SpawnedEnemies;
+    [SerializeField]
     public List<GameObject> SpawnedPickups;
     public int InitialEnemiesCount;
+    [ShowNativeProperty]
     public int SpawnedEnemiesCount => SpawnedEnemies.Count;
+    [ShowNativeProperty]
     public int DeadEnemiesCount => InitialEnemiesCount - SpawnedEnemiesCount;
 }
 
@@ -26,7 +31,27 @@ public class RoundManager : MonoBehaviour
     [ReorderableList]
     public GameObject[] PickupsPrefabs;
 
+    [Header("Boss")]
+    public Transform _BossRightHandSpawn;
+    public Transform _BossLeftHandSpawn;
+    public Transform _BossSpawn;
+    public ParticleSystem _BossRightHandSpawnParticleSystem;
+    public ParticleSystem _BossLeftHandSpawnParticleSystem;
+    public ParticleSystem _BossSpawnParticleSystem;
+    public MoleBoss _BossPrefab;
+    public MoleHand _BossRightHandPrefab;
+    public MoleHand _BossLeftHandPrefab;
+    public SoundFileObject _EarthquakeSound;
+    public BoxCollider BossTopSpawn;
+    public GameObject BarrelPrefab;
+
+    private MoleBoss _Boss;
+    private MoleHand _BossRightHand;
+    private MoleHand _BossLeftHand;
+
+
     private Rect CloseSpawnBounds = new();
+    private Rect TopSpawnBounds = new();
 
     [ShowNativeProperty]
     public RoundState CurrentRoundState { get; private set; } = new();
@@ -34,7 +59,7 @@ public class RoundManager : MonoBehaviour
     public static RoundManager Instance { get; private set; }
 
     // scalings xd
-    public float CalculateEnemyHealth() => 10 + (Game.Instance.CurrentLevel * 2) + (Game.Instance.CurrentLevel >= Game.Instance.BossLevel ? Game.Instance.CurrentLevel.Pow(2) * 0.25f : 0f);
+    public float CalculateEnemyHealth() => 9 + (Game.Instance.CurrentLevel * 4) + (Game.Instance.CurrentLevel >= Game.Instance.BossLevel ? Game.Instance.CurrentLevel.Pow(2) * 0.25f : 0f);
     public int CalculateEnemySpawnRate() => Mathfs.FloorToInt(Freya.Random.Range(1, 3) + (Game.Instance.CurrentLevel >= Game.Instance.BossLevel ? Freya.Random.Range(1, Game.Instance.CurrentLevel - 3)  : 0f));
     public int CalculatePickupSpawnRate() => Mathfs.FloorToInt(Freya.Random.Range(1, Mathfs.CeilToInt(Game.Instance.CurrentLevel/4) + 1));
 
@@ -47,8 +72,11 @@ public class RoundManager : MonoBehaviour
         }
 
         Instance = this;
-
+        _BossSpawnParticleSystem.Stop();
+        _BossLeftHandSpawnParticleSystem.Stop();
+        _BossRightHandSpawnParticleSystem.Stop();
         CloseSpawnBounds = Get2DSpawnBounds(CloseSpawn!.bounds);
+        TopSpawnBounds = Get2DSpawnBounds(BossTopSpawn!.bounds);
     }
 
     const float reserveSize = 1.5f;
@@ -94,10 +122,140 @@ public class RoundManager : MonoBehaviour
         CurrentRoundState = state;
     }
 
-    private int _bossLevelPhase = 1;
+    private bool _leftHandDead = false;
+    private bool _rightHandDead = false;
+    bool _spawnedBoos = false;
+    bool _bossActive = false;
+
+    const float defaultFov = 40;
+    const float animFov = 50;
+    const float handAnimation = 4f;
+    const float bossAnimation = 4f;
+
     public void PrepareBossLevel()
     {
+        _spawnedBoos = false;
 
+        Camera.main.DOFieldOfView(animFov, 1f).SetEase(Ease.Linear).OnComplete(() => {
+            AudioManager.PlaySound(_EarthquakeSound);
+
+            _BossRightHand = Instantiate(_BossRightHandPrefab, _BossRightHandSpawn.transform.position, Quaternion.identity, RoundContainer);
+            _BossLeftHand = Instantiate(_BossLeftHandPrefab, _BossLeftHandSpawn.transform.position, Quaternion.identity, RoundContainer);
+
+            _BossRightHand.RunSpawnAnimation(handAnimation);
+            _BossLeftHand.RunSpawnAnimation(handAnimation);
+            _BossLeftHandSpawnParticleSystem.gameObject.SetActive(true);
+            _BossLeftHandSpawnParticleSystem.Play();
+            _BossRightHandSpawnParticleSystem.gameObject.SetActive(true);
+            _BossRightHandSpawnParticleSystem.Play();
+            TweenTools.Shake2(Camera.main.transform, handAnimation, 5.5f);
+
+            _BossRightHand.GetComponent<Enemy>().OnDeath += () => {
+                _rightHandDead = true;
+                if (_leftHandDead && _rightHandDead)
+                {
+                    PrepareBossLevelPhase2();
+                }
+            };
+            _BossLeftHand.GetComponent<Enemy>().OnDeath += () => {
+                _leftHandDead = true;
+                if (_leftHandDead && _rightHandDead)
+                {
+                    PrepareBossLevelPhase2();
+                }
+            };
+
+            UniTask.Void(async () => {
+                await UniTask.Delay(TimeSpan.FromSeconds(handAnimation), ignoreTimeScale: false);
+                _BossLeftHandSpawnParticleSystem.Stop();
+                _BossLeftHandSpawnParticleSystem.gameObject.SetActive(false);
+                _BossRightHandSpawnParticleSystem.Stop();
+                _BossRightHandSpawnParticleSystem.gameObject.SetActive(false);
+                Camera.main.DOFieldOfView(defaultFov, 0.333f).SetEase(Ease.Linear);
+                BossLevelPhase1Started();
+                await UniTask.Delay(TimeSpan.FromSeconds(0.5f), ignoreTimeScale: false);
+                AudioManager.StopSound(_EarthquakeSound);
+            });
+        });
+    }
+
+    public void BossLevelPhase1Started()
+    {
+        Game.Instance.PauseOilDepletion = false;
+        _bossActive = true;
+        // spawn barrels
+    }
+
+    public void PrepareBossLevelPhase2()
+    {
+        _bossActive = false;
+        Game.Instance.PauseOilDepletion = true;
+
+        AudioManager.PlaySound(_EarthquakeSound);
+
+        Camera.main.DOFieldOfView(animFov, 1f).SetEase(Ease.Linear).OnComplete(() => {
+            _Boss = Instantiate(_BossPrefab, _BossSpawn.transform.position, Quaternion.identity, RoundContainer);
+            _Boss.RunSpawnAnimation(bossAnimation);
+            _spawnedBoos = true;
+
+            _BossSpawnParticleSystem.gameObject.SetActive(true);
+            _BossSpawnParticleSystem.Play();
+            TweenTools.Shake2(Camera.main.transform, handAnimation, 5.5f);
+
+            _Boss.GetComponent<Enemy>().OnDeath += () => {
+                UniTask.Void(async () => {
+                    _BossSpawnParticleSystem.Stop();
+                    _BossSpawnParticleSystem.gameObject.SetActive(false);
+                    _bossActive = false;
+                    Game.Instance.PauseOilDepletion = true;
+                    AudioManager.PlaySound(_EarthquakeSound);
+                    _BossLeftHand.RunDespawnAnimation(3f);
+                    _BossRightHand.RunDespawnAnimation(3f);
+                    _Boss.RunDespawnAnimation(3f);
+                    await UniTask.Delay(TimeSpan.FromSeconds(3f), ignoreTimeScale: false);
+                    AudioManager.StopSound(_EarthquakeSound);
+                    _Boss = null;
+                    _BossLeftHand = null;
+                    _BossRightHand = null;
+                });
+            };
+
+            UniTask.Void(async () => {
+                await UniTask.Delay(TimeSpan.FromSeconds(bossAnimation), ignoreTimeScale: false);
+                Camera.main.DOFieldOfView(defaultFov, 0.333f).SetEase(Ease.Linear);
+                BossLevelPhase2Started();
+                await UniTask.Delay(TimeSpan.FromSeconds(1f), ignoreTimeScale: false);
+                AudioManager.StopSound(_EarthquakeSound);
+            });
+        });
+    }
+
+    List<GameObject> _barrels = new();
+    void SpawnBarrel()
+    {
+        var spawnPoint = GetRandomPointInBounds(TopSpawnBounds);
+        var barrel = Instantiate(BarrelPrefab,new float3(spawnPoint.x, 13f, spawnPoint.y), Quaternion.identity, RoundContainer);
+        _barrels.Add(barrel);
+    }
+
+    const float spawnRate = 3f;
+    private float elapsedTime = 0;
+    void Update()
+    {
+        if (!_bossActive) return;
+        if (_bossActive && elapsedTime > spawnRate)
+        {
+            elapsedTime = 0;
+            SpawnBarrel();
+            return;
+        }
+        elapsedTime += Time.deltaTime;
+    }
+
+    public void BossLevelPhase2Started()
+    {
+        Game.Instance.PauseOilDepletion = false;
+        _bossActive = true;
     }
 
     List<Rect> ReservedAreas = new();
@@ -130,6 +288,19 @@ public class RoundManager : MonoBehaviour
 
     public void TeardownRound()
     {
+        _leftHandDead = false;
+        _rightHandDead = false;
+        Game.Instance.PauseOilDepletion = false;
+        _spawnedBoos = false;
+        _bossActive = false;
+        elapsedTime = 0;
+
+        foreach (var barrel in _barrels)
+        {
+            Destroy(barrel);
+        }
+        _barrels.Clear();
+
         foreach (var enemy in CurrentRoundState.SpawnedEnemies)
         {
             Destroy(enemy.gameObject);
@@ -150,6 +321,8 @@ public class RoundManager : MonoBehaviour
 
     public bool CheckRoundState()
     {
+        if (Game.Instance.IsDoingBoss) return _spawnedBoos && _Boss is null;
+
         if (CurrentRoundState.SpawnedEnemiesCount == 0)
         {
             return true;
@@ -188,5 +361,4 @@ public class RoundManager : MonoBehaviour
         var max = center + halfSize;
         return new Rect(min.x, min.z, max.x, max.z);
     }
-
 }

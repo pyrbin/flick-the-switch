@@ -155,6 +155,9 @@ public class Player : MonoBehaviour
 
     public void OnClick(Transform target)
     {
+        if (target.TryGetComponent<Enemy>(out var enemy) && enemy.IsInvincible)
+            return;
+
         TweenTools.Shake(Cursor.Instance!.CursorRectTransform!.GetChild(0).GetComponent<RectTransform>(), 0.33f, 14.55f);
 
         if (target.TryGetComponent<Health>(out var health))

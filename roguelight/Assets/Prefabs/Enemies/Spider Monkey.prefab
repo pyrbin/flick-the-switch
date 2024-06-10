@@ -56,6 +56,7 @@ MonoBehaviour:
   Health: {fileID: 2846466224625931007}
   GoldReward: {fileID: 4951550091080711587}
   ShakePivot: {fileID: 5039227302238788835}
+  DestroyOnDeath: 1
   Clickable: {fileID: 0}
 --- !u!114 &4951550091080711587
 MonoBehaviour:
@@ -117,7 +118,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 2.4188318, y: 1.9398379, z: 2.1842918}
-  m_Center: {x: -0.010324955, y: 0.46991968, z: 0.3661332}
+  m_Center: {x: -0.010324955, y: 1.2, z: 0.3661332}
 --- !u!114 &6923209460085510159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735bf25af6f471e4b9fbd39cf699e98a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 6
+  Radius: 4
   Speed: 1
   VerticalRange: 4
   VerticalSpeed: 1
@@ -206,7 +207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3910990755373119420, guid: 1cb89dc51395aca4c827949c9208a95d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.735
       objectReference: {fileID: 0}
     - target: {fileID: -3910990755373119420, guid: 1cb89dc51395aca4c827949c9208a95d, type: 3}
       propertyPath: m_LocalPosition.z

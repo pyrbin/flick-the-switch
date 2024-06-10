@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 8200865748162053930}
   - component: {fileID: 1029293495126485227}
   - component: {fileID: 8212846696846543564}
+  - component: {fileID: 756157867179788456}
   m_Layer: 0
-  m_Name: Mole Hand
+  m_Name: Mole Hand (Left)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,10 +31,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755496510658321938}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.9999998, z: -0, w: -0.00064737035}
-  m_LocalPosition: {x: -5.11, y: 0, z: -2.85}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4030662046535972061}
   m_Father: {fileID: 0}
@@ -68,6 +69,7 @@ MonoBehaviour:
   Health: {fileID: 8200865748162053930}
   GoldReward: {fileID: 1029293495126485227}
   ShakePivot: {fileID: 4030662046535972061}
+  DestroyOnDeath: 0
   Clickable: {fileID: 0}
 --- !u!135 &7523803041357989735
 SphereCollider:
@@ -102,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521ecacaf2ea17a4e976e10a6aee6153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _base: 0
+  _base: 150
   Current: -1
 --- !u!114 &1029293495126485227
 MonoBehaviour:
@@ -116,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bcbadf496110d74cae9f7b146ad1cb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _base: 0
+  _base: 5
 --- !u!114 &8212846696846543564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +132,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsEnabled: 1
+--- !u!114 &756157867179788456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755496510658321938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786b234d14a3f8541b4a7148cf6ad632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Side: 0
+  Clickable: {fileID: 0}
+  Enemy: {fileID: 0}
 --- !u!1 &6917608355838853629
 GameObject:
   m_ObjectHideFlags: 0

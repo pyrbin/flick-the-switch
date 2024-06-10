@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de09c8721e537cc438cf1212d7855a95, type: 3}
   m_Name: +2 Multistrike Mult
   m_EditorClassIdentifier: 
-  Name: lucky sword
+  Name: sword
   Image: {fileID: 6221278880274769308, guid: 4252f135aa8e83c4ba695177daae56bf, type: 3}
   Color: {r: 0, g: 0.21875906, b: 1, a: 1}
   AccentColor: {r: 0.24056602, g: 0.65874696, b: 1, a: 1}
   Type: 5
   Value: 2
-  GoldCost: 4
+  GoldCost: 5
   Modifier: 0
   OverrideDescription: 

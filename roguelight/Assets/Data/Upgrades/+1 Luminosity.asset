@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de09c8721e537cc438cf1212d7855a95, type: 3}
   m_Name: +1 Luminosity
   m_EditorClassIdentifier: 
-  Name: lumen
+  Name: bulb (dont buy)
   Image: {fileID: 5944314725745265874, guid: 101fe2fc4c71a4542aca5f3eaffd964a, type: 3}
   Color: {r: 0.509434, g: 0.501017, b: 0.42532933, a: 1}
   AccentColor: {r: 0.7735849, g: 0.7620788, b: 0.6896582, a: 1}

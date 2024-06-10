@@ -9,12 +9,16 @@ public class Enemy : MonoBehaviour
     public Health? Health;
     public GoldReward? GoldReward;
     public Transform? ShakePivot;
+    public bool DestroyOnDeath = true;
+
+    public event Action? OnDeath;
 
     [ReadOnly]
     public Clickable? Clickable;
 
     public bool IsDying { get; private set; } = false;
     public bool IsDead { get; private set; } = false;
+    public bool IsInvincible { get; set; } = false;
 
     public void OnEnable()
     {
@@ -42,6 +46,7 @@ public class Enemy : MonoBehaviour
 
     public void OnClick(Transform _cursor)
     {
+        if (IsInvincible) return;
         if (IsDying || IsDead) return;
         EnemyAudio.PlayHitSound();
         AudioManager.PlaySound(Audio.Sounds.Hit);
@@ -68,7 +73,11 @@ public class Enemy : MonoBehaviour
         IsDead = true;
         transform.DOComplete();
         transform.DOKill();
+        OnDeath?.Invoke();
         Player.Instance.AddGold((int)GoldReward!.Value);
-        Destroy(gameObject);
+        if (DestroyOnDeath)
+        {
+            Destroy(gameObject);
+        }
     }
 }

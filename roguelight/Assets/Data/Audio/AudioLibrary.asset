@@ -47,6 +47,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b17139a71615145498a505253be90203, type: 2}
   - {fileID: 11400000, guid: 0f54ea62aeb18d040863b9b22c8b4904, type: 2}
   - {fileID: 11400000, guid: 16c7f96612380e4479ebc7ab53a83438, type: 2}
+  - {fileID: 11400000, guid: 1d412b692e9f26e42b0d8344768a37d5, type: 2}
   useCustomNames: 1
   generatedName: AudioLibrary
   musicEnum: Music
@@ -95,4 +96,5 @@ MonoBehaviour:
     - {fileID: 11400000, guid: b17139a71615145498a505253be90203, type: 2}
     - {fileID: 11400000, guid: 0f54ea62aeb18d040863b9b22c8b4904, type: 2}
     - {fileID: 11400000, guid: 16c7f96612380e4479ebc7ab53a83438, type: 2}
+    - {fileID: 11400000, guid: 1d412b692e9f26e42b0d8344768a37d5, type: 2}
     foldout: 1

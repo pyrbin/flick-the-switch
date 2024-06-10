@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de09c8721e537cc438cf1212d7855a95, type: 3}
   m_Name: +10% Multi Strike
   m_EditorClassIdentifier: 
-  Name: lucky sword
+  Name: big sword
   Image: {fileID: 6221278880274769308, guid: 4252f135aa8e83c4ba695177daae56bf, type: 3}
   Color: {r: 1, g: 0.5615011, b: 0, a: 1}
   AccentColor: {r: 1, g: 0.77341014, b: 0.4669811, a: 1}

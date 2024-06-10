@@ -49,6 +49,7 @@ public class Game : MonoBehaviour
 
     public int BossLevel = 8;
     public bool IsDoingBoss => CurrentLevel == BossLevel && State == GameState.Playing;
+    public bool PauseOilDepletion { get; set;} = false;
 
     [Header("Gameplay")]
     public float BaseOilDepletionRate = 10f;
@@ -127,7 +128,6 @@ public class Game : MonoBehaviour
             }
         };
 
-
         Player.OnKill += () =>
         {
             Stats.TotalKills++;
@@ -177,13 +177,22 @@ public class Game : MonoBehaviour
                 Inventory!.SetActive(false);
                 Shop.SetActive(false);
                 CurrentLevel++;
+                if (IsDoingBoss)
+                {
+                    PauseOilDepletion = true;
+                    AudioManager.PlayMusic(Audio.Music.Playing);
+                }
+                else
+                {
+                    Game.Instance.PauseOilDepletion = false;
+                    AudioManager.PlayMusic(Audio.Music.Boss);
+                }
                 Stats.Level = CurrentLevel;
                 Switch!.SetActive(false);
                 MainMenu!.Hide();
                 HUD!.Show();
                 Player!.GetComponent<Oil>().SetFull();
                 UpdateRoomAndLightsOnRound(true);
-                AudioManager.PlayMusic(Audio.Music.Playing);
                 RoundManager.Instance.PrepareRound(CurrentLevel);
                 break;
             case GameState.Shop:
@@ -329,7 +338,7 @@ public class Game : MonoBehaviour
             RoundExitLight!.SetActive(true);
         }
 
-        if (!IsDoingBoss)
+        if (!PauseOilDepletion)
         {
             Player!.GetComponent<Oil>().Reduce(OilDepletionRate * Time.deltaTime);
         }
