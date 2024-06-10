@@ -77,6 +77,6 @@ public class Shop : MonoBehaviour
         OilText.text = StatLookup.NameOf(StatType.Oil) + ": " + Player.Instance.Oil.Value.RoundToInt();
         MultiDmgText.text = StatLookup.NameOf(StatType.MultiDmg) + ": " + Player.Instance.MultiStrike.Value.RoundToInt();
         MultiChanceText.text = StatLookup.NameOf(StatType.MultiChance) + ": " + Player.Instance.MultiChance.Value.RoundToInt() + "%";
-        CurrentLevelText.text = "next level: " + Game.Instance.CurrentLevel + 1;
+        CurrentLevelText.text = $"next level: {(Game.Instance.CurrentLevel + 1)}";
     }
 }
