@@ -2,6 +2,8 @@ using JetBrains.Annotations;
 using JSAM;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using Utilities.Extensions;
 
 [System.Serializable]
 public struct RoundState
@@ -48,6 +50,7 @@ public class RoundManager : MonoBehaviour
     private MoleBoss _Boss;
     private MoleHand _BossRightHand;
     private MoleHand _BossLeftHand;
+    public Slider? BossHealth;
 
 
     private Rect CloseSpawnBounds = new();
@@ -59,8 +62,8 @@ public class RoundManager : MonoBehaviour
     public static RoundManager Instance { get; private set; }
 
     // scalings xd
-    public float CalculateEnemyHealth() => 9 + (Game.Instance.CurrentLevel * 7) + (Game.Instance.CurrentLevel >= Game.Instance.BossLevel ? Game.Instance.CurrentLevel.Pow(2) * (Game.Instance.CurrentLevel >= 12 ? 1.2f : 0.7f) : 0f);
-    public int CalculateEnemySpawnRate() => Mathfs.FloorToInt(Freya.Random.Range(2, (Game.Instance.CurrentLevel / 2f).CeilToInt()) + (Game.Instance.CurrentLevel >= Game.Instance.BossLevel ? Freya.Random.Range(1, Game.Instance.CurrentLevel -  Game.Instance.BossLevel / 2)  : 0f));
+    public float CalculateEnemyHealth() => 11 + (Game.Instance.CurrentLevel * 6) + (Game.Instance.CurrentLevel >= Game.Instance.BossLevel ? Game.Instance.CurrentLevel.Pow(2) * (Game.Instance.CurrentLevel >= 15 ? 0.75f : 0.5f) : 0f);
+    public int CalculateEnemySpawnRate() => Mathfs.FloorToInt(Freya.Random.Range(2, (Game.Instance.CurrentLevel * 0.66f).CeilToInt()) + (Game.Instance.CurrentLevel >= 6? Freya.Random.Range(0, Game.Instance.CurrentLevel - 5 / 2)  : 0f));
     public int CalculatePickupSpawnRate() => Mathfs.FloorToInt(Freya.Random.Range(1, Mathfs.CeilToInt(Game.Instance.CurrentLevel/4) + 1));
 
     public void Awake()
@@ -128,7 +131,7 @@ public class RoundManager : MonoBehaviour
     bool _bossActive = false;
 
     const float defaultFov = 40;
-    const float animFov = 50;
+    const float animFov = 60;
     const float handAnimation = 4f;
     const float bossAnimation = 4f;
 
@@ -255,7 +258,22 @@ public class RoundManager : MonoBehaviour
     private float elapsedTime = 0;
     void Update()
     {
-        if (!_bossActive) return;
+        if (!_bossActive)
+        {
+            BossHealth.SetActive(false);
+            return;
+        }
+
+        if (_Boss is not null)
+        {
+            BossHealth.value = _Boss.GetComponent<Health>().Percentage();
+            BossHealth.SetActive(true);
+        }
+        else
+        {
+            BossHealth.SetActive(false);
+        }
+
         if (_bossActive && elapsedTime > spawnRate)
         {
             elapsedTime = 0;

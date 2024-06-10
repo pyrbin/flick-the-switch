@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47184cc32f4ac8b4b9f035214f9e3e5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RewardCount: 0.135
+  RewardCount: 0.075
   Health: {fileID: 2405952332255417318}
   GoldReward: 0
   OilReward: 1
