@@ -50,9 +50,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47184cc32f4ac8b4b9f035214f9e3e5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RewardCount: 2
+  RewardCount: 3
   Health: {fileID: 7771941819270456380}
-  GoldReward: 0
+  GoldReward: 1
   OilReward: 0
   ShakePivot: {fileID: 8283636494501502679}
   Clickable: {fileID: 0}

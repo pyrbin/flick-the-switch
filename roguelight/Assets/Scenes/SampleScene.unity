@@ -3761,7 +3761,7 @@ MonoBehaviour:
   RoundContainer: {fileID: 1870757295}
   BackWall: {fileID: 1541221267}
   BossLevel: 10
-  BaseOilDepletionRate: 10
+  BaseOilDepletionRate: 9
   RerollBaseCost: 2
   InterestRate: 4
   InterestCeiling: 20
@@ -3847,7 +3847,7 @@ MonoBehaviour:
   - LowerLevelThreshold: 7
     UpperLevelThreshold: 255
     Item: {fileID: 11400000, guid: 0ed94d7630cdd1645a827a5c7c000741, type: 2}
-  - LowerLevelThreshold: 6
+  - LowerLevelThreshold: 5
     UpperLevelThreshold: 255
     Item: {fileID: 11400000, guid: ea67396ee96ed204ba6b41ccb8c8d4ea, type: 2}
   - LowerLevelThreshold: 8
@@ -3856,6 +3856,27 @@ MonoBehaviour:
   - LowerLevelThreshold: 2
     UpperLevelThreshold: 255
     Item: {fileID: 11400000, guid: 22e83e62c9283204da32b19c52c853c6, type: 2}
+  - LowerLevelThreshold: 6
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: f7c39be70cf59cb47b6d9ccd6bffc195, type: 2}
+  - LowerLevelThreshold: 7
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: f7c39be70cf59cb47b6d9ccd6bffc195, type: 2}
+  - LowerLevelThreshold: 4
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: f6de0a61399d8ca4f81c6782a87ec53c, type: 2}
+  - LowerLevelThreshold: 3
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: 656cc12af60ece548a73e30152747f60, type: 2}
+  - LowerLevelThreshold: 9
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: ad7852a7d876d56498a46bf392af2ba4, type: 2}
+  - LowerLevelThreshold: 8
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: 0ed94d7630cdd1645a827a5c7c000741, type: 2}
+  - LowerLevelThreshold: 5
+    UpperLevelThreshold: 255
+    Item: {fileID: 11400000, guid: 665707aa9a41c594e8203b4e19507f72, type: 2}
   State: 0
   Stats:
     TotalGold: 0
@@ -4804,8 +4825,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 946
-    height: 532
+    width: 1237
+    height: 696
 --- !u!1 &536523486
 GameObject:
   m_ObjectHideFlags: 0

@@ -60,7 +60,7 @@ public class RoundManager : MonoBehaviour
 
     // scalings xd
     public float CalculateEnemyHealth() => 9 + (Game.Instance.CurrentLevel * 4) + (Game.Instance.CurrentLevel >= Game.Instance.BossLevel ? Game.Instance.CurrentLevel.Pow(2) * 0.25f : 0f);
-    public int CalculateEnemySpawnRate() => Mathfs.FloorToInt(Freya.Random.Range(1, 3) + (Game.Instance.CurrentLevel >= Game.Instance.BossLevel ? Freya.Random.Range(1, Game.Instance.CurrentLevel - 3)  : 0f));
+    public int CalculateEnemySpawnRate() => Mathfs.FloorToInt(Freya.Random.Range(2, (Game.Instance.CurrentLevel / 2f).CeilToInt()) + (Game.Instance.CurrentLevel >= Game.Instance.BossLevel - 2 ? Freya.Random.Range(1, Game.Instance.CurrentLevel -  Game.Instance.BossLevel / 2)  : 0f));
     public int CalculatePickupSpawnRate() => Mathfs.FloorToInt(Freya.Random.Range(1, Mathfs.CeilToInt(Game.Instance.CurrentLevel/4) + 1));
 
     public void Awake()
@@ -183,7 +183,6 @@ public class RoundManager : MonoBehaviour
     {
         Game.Instance.PauseOilDepletion = false;
         _bossActive = true;
-        // spawn barrels
     }
 
     public void PrepareBossLevelPhase2()
@@ -209,9 +208,7 @@ public class RoundManager : MonoBehaviour
                     _bossActive = false;
                     Game.Instance.PauseOilDepletion = true;
                     AudioManager.PlaySound(_EarthquakeSound);
-                    _BossLeftHand.RunDespawnAnimation(3f);
-                    _BossRightHand.RunDespawnAnimation(3f);
-                    _Boss.RunDespawnAnimation(3f);
+                    TeardownBoss(false);
                     await UniTask.Delay(TimeSpan.FromSeconds(3f), ignoreTimeScale: false);
                     AudioManager.StopSound(_EarthquakeSound);
                     _Boss = null;
@@ -230,6 +227,22 @@ public class RoundManager : MonoBehaviour
         });
     }
 
+    void TeardownBoss(bool setNull = true)
+    {
+        _BossSpawnParticleSystem.Stop();
+        _BossSpawnParticleSystem.gameObject.SetActive(false);
+        _bossActive = false;
+        _BossLeftHand?.RunDespawnAnimation(3f);
+        _BossRightHand?.RunDespawnAnimation(3f);
+        _Boss?.RunDespawnAnimation(3f);
+        if (setNull)
+        {
+            _Boss = null;
+            _BossLeftHand = null;
+            _BossRightHand = null;
+        }
+    }
+
     List<GameObject> _barrels = new();
     void SpawnBarrel()
     {
@@ -238,7 +251,7 @@ public class RoundManager : MonoBehaviour
         _barrels.Add(barrel);
     }
 
-    const float spawnRate = 3f;
+    const float spawnRate = 1.5f;
     private float elapsedTime = 0;
     void Update()
     {
@@ -288,6 +301,7 @@ public class RoundManager : MonoBehaviour
 
     public void TeardownRound()
     {
+        TeardownBoss(true);
         _leftHandDead = false;
         _rightHandDead = false;
         Game.Instance.PauseOilDepletion = false;

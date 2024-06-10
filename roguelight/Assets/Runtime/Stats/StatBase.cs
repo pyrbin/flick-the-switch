@@ -16,7 +16,7 @@ public abstract class StatBase : MonoBehaviour
     private float _flat = 0f;
 
     [ShowNativeProperty]
-    public float Value => (_base * (1.0f + _multiplier)) + _flat;
+    public float Value => (_base + _flat) * (1.0f + _multiplier);
 
     [ShowNativeProperty]
     public float BaseValue => _base;
