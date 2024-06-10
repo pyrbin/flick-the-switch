@@ -59,8 +59,8 @@ public class RoundManager : MonoBehaviour
     public static RoundManager Instance { get; private set; }
 
     // scalings xd
-    public float CalculateEnemyHealth() => 9 + (Game.Instance.CurrentLevel * 4) + (Game.Instance.CurrentLevel >= Game.Instance.BossLevel ? Game.Instance.CurrentLevel.Pow(2) * 0.25f : 0f);
-    public int CalculateEnemySpawnRate() => Mathfs.FloorToInt(Freya.Random.Range(2, (Game.Instance.CurrentLevel / 2f).CeilToInt()) + (Game.Instance.CurrentLevel >= Game.Instance.BossLevel - 2 ? Freya.Random.Range(1, Game.Instance.CurrentLevel -  Game.Instance.BossLevel / 2)  : 0f));
+    public float CalculateEnemyHealth() => 9 + (Game.Instance.CurrentLevel * 7) + (Game.Instance.CurrentLevel >= Game.Instance.BossLevel ? Game.Instance.CurrentLevel.Pow(2) * (Game.Instance.CurrentLevel >= 12 ? 1.2f : 0.7f) : 0f);
+    public int CalculateEnemySpawnRate() => Mathfs.FloorToInt(Freya.Random.Range(2, (Game.Instance.CurrentLevel / 2f).CeilToInt()) + (Game.Instance.CurrentLevel >= Game.Instance.BossLevel ? Freya.Random.Range(1, Game.Instance.CurrentLevel -  Game.Instance.BossLevel / 2)  : 0f));
     public int CalculatePickupSpawnRate() => Mathfs.FloorToInt(Freya.Random.Range(1, Mathfs.CeilToInt(Game.Instance.CurrentLevel/4) + 1));
 
     public void Awake()
@@ -251,7 +251,7 @@ public class RoundManager : MonoBehaviour
         _barrels.Add(barrel);
     }
 
-    const float spawnRate = 1.5f;
+    const float spawnRate = 1f;
     private float elapsedTime = 0;
     void Update()
     {
