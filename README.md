@@ -1,4 +1,4 @@
-## flip the switch 
+## flick the switch 
 
 Game made in Unity for [Mini Jam 160](https://itch.io/jam/mini-jam-160-light) 
 
